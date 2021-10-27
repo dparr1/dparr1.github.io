@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Dave's Lab CSS webpage!</title>
+    <style>
+      p { font-family: serif;}
+      h1, h2, h3 { font-family: fantasy;}
+      #divbox { display: flex;
+                   flex-direction: row; flex-wrap: wrap; }
+      #aboutme { background-color: lightblue;
+                 border: 5px solid green; }
+      .container { padding: .4in;
+                   border: 5px solid black;
+                  background-color: lightgreen;
+                  margin: 2pt;}
+        #neighborhood { width: 200px; height: 300px; border-radius: 25px;}
+        table { border: 5px black solid;}
+        td { background-color: lightgray; }
+    </style>
+  </head>
+  <!-- THis is my js01 page -->
+  <body>
+    <h1 class="header">This is my first javascript webpage!</h1>
+
+<div id="divbox">
+    <div id="aboutme" class="container">
+      <h2 class="header">About me</h2>
+
+      <p>
+        <script>
+            document.write("I am the instructor for web mapping.");
+        </script>
+        I'm an instructor of GIS at
+        <a href="http://www.msudenver.edu">
+        Metropolitan State University of Denver</a>. I love my job!
+      </p>
+      <p>That's me. WHat about you?<p>
+
+      <p>You can email me at <a href="mailto:dparr1@msudenver.edu">here</a>.</p>
+      <img width=100 height=120 src="http://www.daveparr.com/blog/wp-content/uploads/2019/06/daveparr-1.jpg">
+
+      <p>My GitHub repository is at <a href="https://github.com/dparr1?tab=repositories">here.</a></p>
+
+    </div>
+
+
+    <div id="classes1" class="container">
+      <h3 class="header">Classes I'm teaching</h3>
+
+      <ul>
+        <li>Intro to Geospatial Science</li>
+        <li>GIS</li>
+        <li>Web Mapping</li>
+        <li>Cartography</li>
+        <li>GIS Applications</li>
+      </ul>
+    </div>
+
+    <div id="classes2" class="container">
+    <h3 class="header">Classes I'm not teaching in order of not teaching them</h3>
+
+      <ol>
+        <li>Spatial Modeling in Raster</li>
+        <li>Spatial Databases</li>
+        <li>GIS Programming</li>
+      </ol>
+    </div>
+
+    <div id="classes3" class="container">
+    <h3 class="header">Schedule of Classes Coming Up</h3>
+
+    <table border=1>
+      <tr><th>Class</th>
+          <th>Fall Semester</th>
+          <th>Spring Semester</th>
+      </tr>
+      <tr><td>Intro to Geospatial Sciences</td>
+          <td>Yes</td>
+          <td>Yes</td>
+      </tr>
+      <tr><td>GIS</td>
+          <td>Yes</td>
+          <td>Yes</td>
+      </tr>
+      <tr><td>Web Mapping</td>
+          <td colspan=2>Every 3rd semester</td>
+      </tr>
+    </table>
+  </div>
+
+
+   <div id="neighborhood-map" class="container">
+   <p>Here's a map of my neighborhood: <img id="neighborhood" src="map.jpg"></p>
+ </div>
+</div>
+  </body>
+</html>
