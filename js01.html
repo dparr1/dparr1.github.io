@@ -17,6 +17,8 @@
         table { border: 5px black solid;}
         td { background-color: lightgray; }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
   </head>
   <body>
     <h1 class="header">This is my first javascript webpage!</h1>
@@ -25,12 +27,14 @@
     <div id="aboutme" class="container">
       <h2 class="header">About me</h2>
 
-      <p>
-        <script>
-           var name = "David";
-           document.write("I have a degree in GIS.<br>" + "and my name is "+name);
-           console.log("javascript is working!");
-        </script>
+      <button id="about_me_button">Click here to learn more about me.</button>
+
+      <script>
+         $("button#about_me_button").click( function() {
+               $("p#aboutme_p").show();
+         });
+      </script>
+      <p hidden id="aboutme_p">
         I'm an instructor of GIS at
         <a href="http://www.msudenver.edu">
         Metropolitan State University of Denver</a>. I love my job!
