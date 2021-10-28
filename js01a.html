@@ -51,9 +51,14 @@
         Metropolitan State University of Denver</a>. I love my job!<br>
         <!-- a <br> is a line break -->
 
-        You can email me at <a href="mailto:dparr1@msudenver.edu">here</a>.</p>
+        You can email me at <span id="email"><a href="mailto:dparr1@msudenver.edu">here</a></span>.</p>
+        <script>
+           $("#email").hover( function() {
+              $("email").html("<a href=\"mailto:president@whitehouse\">the president</a>");
+           });
+        </script>
 
-      <button>Hover over the photo to learn more!</button>
+      <p><button>Hover over the photo to learn more!</button></p>
       <img id="img_hover" width=100 height=120 src="http://www.daveparr.com/blog/wp-content/uploads/2019/06/daveparr-1.jpg">
       <figcaption id="about_dr_parr" hidden>This is Dr. Parr</figcaption>
       <script>
@@ -114,6 +119,15 @@
 
    <div id="neighborhood-map" class="container">
    <p>Here's a map of my neighborhood: <img id="neighborhood" src="map.jpg"></p>
+ </div>
+
+ <div class="container">
+   <h2>Click button code</h2>
+   <pre>
+     $("#about_me_button").click( function() {
+           $("p#aboutme_p").toggle();
+     });
+   </pre>
  </div>
 </div>
   </body>
