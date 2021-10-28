@@ -17,9 +17,15 @@
         table { border: 5px black solid;}
         td { background-color: lightgray; }
     </style>
+
+    <!-- this is the code to add the jquery library to our page. Use it in the head section. -->
+    <!-- a .js file extension is used for a javascript file -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
   </head>
+
+  <!-- this is an HTML comment -->
+
   <body>
     <h1 class="header">This is my first javascript webpage!</h1>
 
@@ -30,27 +36,33 @@
       <button id="about_me_button">Click here to learn more about me.</button>
 
       <script>
-         $("button#about_me_button").hover( function() {
+         // this is a javascript comment
+         // the $("#about_me_button") refers to any item in the HTML with
+         //    an id of about_me_button
+         // the .click is a function that runs when you click on that button
+         // the $("p#aboutme_p") refers to the paragraph with the id aboutme_p
+         $("#about_me_button").click( function() {
                $("p#aboutme_p").toggle();
          });
       </script>
       <p hidden id="aboutme_p">
         I'm an instructor of GIS at
         <a href="http://www.msudenver.edu">
-        Metropolitan State University of Denver</a>. I love my job!
-      </p>
-      <p>That's me. WHat about you?<p>
+        Metropolitan State University of Denver</a>. I love my job!<br>
+        <!-- a <br> is a line break -->
 
-      <p>You can email me at <a href="mailto:dparr1@msudenver.edu">here</a>.</p>
-      <p><img id="dr_parrs_photo" width=100 height=120 src="http://www.daveparr.com/blog/wp-content/uploads/2019/06/daveparr-1.jpg">
-        <figcaption hidden id="img_hover">This is Dr. Parr!</figcaption>
-        <script>
-           // This is a java
-           $("#dr_parrs_photo").hover( function() {  $("#img_hover").toggle(); })
-        </script>
-      </p>
+        You can email me at <a href="mailto:dparr1@msudenver.edu">here</a>.</p>
 
+      <button>Hover over the photo to learn more!</button>
+      <img id="img_hover" width=100 height=120 src="http://www.daveparr.com/blog/wp-content/uploads/2019/06/daveparr-1.jpg">
+      <figcaption id="about_dr_parr" hidden>This is Dr. Parr</figcaption>
+      <script>
+        $("#img_hover").hover(  function() {
+          $("#about_dr_parr").show();
+        })
+      </script>
       <p>My GitHub repository is at <a href="https://github.com/dparr1?tab=repositories">here.</a></p>
+      <p>Look at the source code of this file to learn more!</p>
 
     </div>
 
