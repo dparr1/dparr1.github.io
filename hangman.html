@@ -11,6 +11,7 @@
         var word =   "h a n g m a n"; // the word to guess
         var blanks = "- - - - - - -"; // this variable holds the temporary information
         var guesses = 10;
+        var guessed; // these are the letters that have already been guessed
 
         $("#guesses").html(guesses);
         $("#word").html(blanks);
@@ -25,10 +26,17 @@
           // change the text decoration for the letter
           $("#"+letter).css("text-decoration", "strikethrough");
 
-          // subtract a guess
-          guesses = guesses - 1;
-          $("#guesses").html(guesses);
+          // check if the letter has already been guessed
+          if (letter in guessed) {
+            $("#messages").text("The letter " + letter + " has already been guessed.")
+          } else {}
+            guessed = guessed + letter;
+            // subtract a guess
+            guesses = guesses - 1;
+            $("#guesses").html(guesses)
+          }
 
+          // check the letters in word and see if there's a match
           var count = 0;
           for (l in word) {
             if (l == letter) {
@@ -44,7 +52,7 @@
 <body>
   <p>The word to guess is <span id="word"></span>.</p>
   <p>There are <span id="guesses"></span> guesses left.</p>
-
+<p>
 <span class="letter" id="a">a</span>
 <span class="letter" id="b">b</span>
 <span class="letter" id="c">c</span>
@@ -71,5 +79,7 @@
 <span class="letter" id="x">x</span>
 <span class="letter" id="y">y</span>
 <span class="letter" id="z">z</span>
+</p>
+<p id="messages"></p>
 
 </body>
