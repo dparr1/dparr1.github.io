@@ -12,13 +12,14 @@
         var blanks = "- - - - - - -"; // this variable holds the temporary information
         var guesses = 10;
         var guessed  = []; // these are the letters that have already been guessed
+        var finished = false;
 
         $("#guesses").html(guesses);
         $("#word").html(blanks);
 
         $(".letter").click(function(e) {
           // run this when a letter is clicked on
-
+          if (finished) { return; }
           // get the letter
           var letter = $(e.target).text();
           console.log("clicked on", letter);
@@ -34,6 +35,10 @@
             // subtract a guess
             guesses = guesses - 1;
             $("#guesses").html(guesses);
+            if (guesses <= 0) {
+              $("#messages").text("Out of guesses!");
+              finished = true;
+            }
           }
 
           // check the letters in word and see if there's a match
@@ -44,6 +49,7 @@
             }
             count = count+1;
           }
+          // update the blanks
           $("#word").html(blanks);
 
 
