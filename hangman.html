@@ -21,7 +21,7 @@
 
           // get the letter
           var letter = $(e.target).text();
-          console.log("clicked on ", letter);
+          console.log("clicked on", letter);
 
           // change the text decoration for the letter
           $("#"+letter).css("text-decoration", "strikethrough");
@@ -29,11 +29,11 @@
           // check if the letter has already been guessed
           if (letter in guessed) {
             $("#messages").text("The letter " + letter + " has already been guessed.")
-          } else {}
+          } else {
             guessed = guessed + letter;
             // subtract a guess
             guesses = guesses - 1;
-            $("#guesses").html(guesses)
+            $("#guesses").html(guesses);
           }
 
           // check the letters in word and see if there's a match
