@@ -7,12 +7,12 @@
 
       $document.ready( function() {
         // put your javascript here
-        var word =   "h a n g m a n";
-        var blanks = "- - - - - - -";
+        var word =   "h a n g m a n"; // the word to guess
+        var blanks = "- - - - - - -"; // this variable holds the temporary information
         var guesses = 10;
 
-        $("#guesses").text(guesses);
-        $("#word").text(word);
+        $("#guesses").html(guesses);
+        $("#word").html(blanks);
       });
 
   </script>
