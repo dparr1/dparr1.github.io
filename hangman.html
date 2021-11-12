@@ -15,11 +15,12 @@
         $("#guesses").html(guesses);
         $("#word").html(blanks);
 
-        $(".letter").click(function() {
+        $(".letter").click(function(e) {
           // run this when a letter is clicked on
 
           // get the letter
-          var letter = $(".")
+          var letter = $(e.target).text();
+          console.log("clicked on ", letter);
         })
       });
 
@@ -29,31 +30,31 @@
   <p>The word to guess is <span id="word"></span>.</p>
   <p>There are <span id="guesses"></span> guesses left.</p>
 
-<span class="letter" id="letter_a">a</span>
-<span class="letter" id="letter_b">b</span>
-<span class="letter" id="letter_c">c</span>
-<span class="letter" id="letter_d">d</span>
-<span class="letter" id="letter_e">e</span>
-<span class="letter" id="letter_f">f</span>
-<span class="letter" id="letter_g">g</span>
-<span class="letter" id="letter_h">h</span>
-<span class="letter" id="letter_i">i</span>
-<span class="letter" id="letter_j">j</span>
-<span class="letter" id="letter_k">k</span>
-<span class="letter" id="letter_l">l</span>
-<span class="letter" id="letter_m">m</span>
-<span class="letter" id="letter_n">n</span>
-<span class="letter" id="letter_o">o</span>
-<span class="letter" id="letter_p">p</span>
-<span class="letter" id="letter_q">q</span>
-<span class="letter" id="letter_r">r</span>
-<span class="letter" id="letter_s">s</span>
-<span class="letter" id="letter_t">t</span>
-<span class="letter" id="letter_u">u</span>
-<span class="letter" id="letter_v">v</span>
-<span class="letter" id="letter_w">w</span>
-<span class="letter" id="letter_x">x</span>
-<span class="letter" id="letter_y">y</span>
-<span class="letter" id="letter_z">z</span>
+<span class="letter" id="a">a</span>
+<span class="letter" id="b">b</span>
+<span class="letter" id="c">c</span>
+<span class="letter" id="d">d</span>
+<span class="letter" id="e">e</span>
+<span class="letter" id="f">f</span>
+<span class="letter" id="g">g</span>
+<span class="letter" id="h">h</span>
+<span class="letter" id="i">i</span>
+<span class="letter" id="j">j</span>
+<span class="letter" id="k">k</span>
+<span class="letter" id="l">l</span>
+<span class="letter" id="m">m</span>
+<span class="letter" id="n">n</span>
+<span class="letter" id="o">o</span>
+<span class="letter" id="p">p</span>
+<span class="letter" id="q">q</span>
+<span class="letter" id="r">r</span>
+<span class="letter" id="s">s</span>
+<span class="letter" id="t">t</span>
+<span class="letter" id="u">u</span>
+<span class="letter" id="v">v</span>
+<span class="letter" id="w">w</span>
+<span class="letter" id="x">x</span>
+<span class="letter" id="y">y</span>
+<span class="letter" id="z">z</span>
 
 </body>
