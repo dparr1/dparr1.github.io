@@ -5,7 +5,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script>
 
-      $document.ready( function() {
+      // $(document) is the jQuery reference to the whole web page
+      $(document).ready( function() {
         // put your javascript here
         var word =   "h a n g m a n"; // the word to guess
         var blanks = "- - - - - - -"; // this variable holds the temporary information
@@ -13,6 +14,13 @@
 
         $("#guesses").html(guesses);
         $("#word").html(blanks);
+
+        $(".letter").click(function() {
+          // run this when a letter is clicked on
+
+          // get the letter
+          var letter = $(".")
+        })
       });
 
   </script>
