@@ -51,6 +51,10 @@
           }
           // update the blanks
           $("#word").html(blanks);
+          if (! blanks.includes("-")) {
+            finished = true;
+            $("#messages").text("You won!");
+          }
 
 
 
