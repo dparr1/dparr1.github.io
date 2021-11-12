@@ -27,7 +27,7 @@
           $("#"+letter).css("text-decoration", "strikethrough");
 
           // check if the letter has already been guessed
-          if (letter in guessed) {
+          if (guessed.includes(letter)) {
             $("#messages").text("The letter " + letter + " has already been guessed.")
           } else {
             guessed = guessed + letter;
