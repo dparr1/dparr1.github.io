@@ -45,7 +45,7 @@
           var count = 0;
           for (l of word) {
             if (l == letter) {
-              blanks[count] = l;
+              blanks = blanks[0:(count-1)] + letter + blanks[count]
             }
             count = count+1;
           }
