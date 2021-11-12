@@ -21,6 +21,21 @@
           // get the letter
           var letter = $(e.target).text();
           console.log("clicked on ", letter);
+
+          // change the text decoration for the letter
+          $("#"+letter).css("text-decoration", "strikethrough");
+
+          // subtract a guess
+          guesses = guesses - 1;
+          $("#guesses").html(guesses);
+
+          var count = 0;
+          for (l in word) {
+            if (l == letter) {
+              blanks[count] = l;
+            }
+            count = count+1;
+          }
         })
       });
 
