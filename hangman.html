@@ -4,6 +4,8 @@
   <title>Hangman!</title>
   <style>
      p { font-size: 24pt;}
+     #game { width: 50%; margin: auto; }
+     #messages { color: red; }
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script>
@@ -17,13 +19,12 @@
         var guessed  = []; // these are the letters that have already been guessed
         var finished = false; // change to true when the game is finished
 
+        $("#guesses").html(guesses);
+        $("#word").html(blanks);
 
       });
 
   </script>
-  <style>
-      #game { width: 50%; margin: auto; }
-  </style>
 </head>
 <body>
   <div id="game">
@@ -62,3 +63,4 @@
 </div>
 
 </body>
+</html>
