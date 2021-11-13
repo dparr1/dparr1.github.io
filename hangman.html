@@ -39,6 +39,12 @@
             // update the blanks
             $("#word").html(blanks);
 
+            // check if we've won
+            if (! blanks.includes("-")) {
+              finished = true;
+              $("#messages").text("You won!");
+            }
+
 
 
         });
