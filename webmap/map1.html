@@ -6,7 +6,7 @@
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
 <body>
@@ -42,6 +42,19 @@ function onMapClick(e) {
 
 // Listen for a click event on the Map element
 map.on('click', onMapClick);
+
+
+$.getJSON("buildings.json",function(data){
+	// add GeoJSON layer to the map once the file is loaded
+	L.geoJson(data,{
+        onEachFeature: function (feature, layer) {
+            layer.bindPopup("Building Type: " + feature.properties.BLDG_TYPE +
+            "<br>Building Height: " +  feature.properties.BLDG_HEIGH +
+            "<br>Ground Elevation: " + feature.properties.GROUND_ELE);
+    	}
+	}).addTo(map);
+});
+
   </script>
 </body>
 </html>
