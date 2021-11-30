@@ -45,7 +45,8 @@ popup
 // Listen for a click event on the Map element
 map.on('click', onMapClick);
 
-mydata = $.getJSON("buildings.json");
+var mydata;
+$.getJSON("buildings.json", function(data) { mydata = data });
 // add GeoJSON layer to the map once the file is loaded
 var buildings = L.geoJson(mydata,{
       onEachFeature: function (feature, layer) {
