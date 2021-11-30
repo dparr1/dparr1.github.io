@@ -45,7 +45,9 @@ popup
 // Listen for a click event on the Map element
 map.on('click', onMapClick);
 
-
+var overlayMaps = {  };
+var baseMaps = { "Default Basemap" : defaultBase };
+var layerControl = L.control.layers(baseMaps,overlayMaps).addTo(map);
 var buildings;
 $.getJSON("buildings.json", function(json) {
     // add GeoJSON layer to the map once the file is loaded
@@ -57,9 +59,7 @@ $.getJSON("buildings.json", function(json) {
           }
     })
     console.log("buildings" + buildings);
-    var overlayMaps = { "Buildings" : buildings };
-    var baseMaps = { "Default Basemap" : defaultBase };
-    var layerControl = L.control.layers(baseMaps,overlayMaps).addTo(map);
+    layerControl.addOverlay(buildings, "Buildings");
 });
 
 
