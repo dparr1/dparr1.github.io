@@ -48,7 +48,7 @@ map.on('click', onMapClick);
 
 $.getJSON("buildings.json",function(data){
 // add GeoJSON layer to the map once the file is loaded
-L.geoJson(data,{
+buildings = L.geoJson(data,{
       onEachFeature: function (feature, layer) {
           layer.bindPopup("Building Type: " + feature.properties.BLDG_TYPE +
           "<br>Building Height: " +  feature.properties.BLDG_HEIGH +
@@ -57,7 +57,8 @@ L.geoJson(data,{
 }).addTo(map);
 });
 
-// add a title
+var overlayMaps = { "Buildings" : buildings };
+L.control.layers(overlayMaps).addTo(map);
 
 
 });
