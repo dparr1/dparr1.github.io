@@ -58,8 +58,8 @@ buildings = L.geoJson(data,{
 });
 
 var overlayMaps = { "Buildings" : buildings };
-var basemaps = { "Default Basemap" : defaultBase}
-L.control.layers(basemaps, overlayMaps).addTo(map);
+var baseMaps = { "Default Basemap" : defaultBase}
+var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
 
 
 });
