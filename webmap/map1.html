@@ -18,7 +18,7 @@
   // Create variable to hold map element, give initial settings to map
   var map = L.map('map',{ center: [39.743218, -105.004568], zoom: 14});
   // Add OpenStreetMap tile layer to map element
-  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution:
+  var defaultBase = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution:
   '© OpenStreetMap' }).addTo(map);
   // Create point feature for Auraria Library
 var myDataPoint = L.marker([39.743119, -105.002959]).addTo(map);
@@ -58,7 +58,8 @@ buildings = L.geoJson(data,{
 });
 
 var overlayMaps = { "Buildings" : buildings };
-L.control.layers({}, overlayMaps).addTo(map);
+var basemaps = { "Default Basemap" : defaultBase}
+L.control.layers(basemaps, overlayMaps).addTo(map);
 
 
 });
