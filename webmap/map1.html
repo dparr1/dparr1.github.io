@@ -61,7 +61,7 @@ $.getJSON("buildings.json",function(data){
 
 var overlayMaps = { "Buildings" : buildings, "Buildings": buildings };
 var baseMaps = { "Default Basemap" : defaultBase, "Default" : defaultBase };
-var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
+var layerControl = L.control.layers().addTo(map);
 
 
 });
