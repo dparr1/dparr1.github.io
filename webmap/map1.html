@@ -15,58 +15,55 @@
 <script>
 
   $(document).ready(function() {
-  // Create variable to hold map element, give initial settings to map
-  var map = L.map('map',{ center: [39.743218, -105.004568], zoom: 14});
-  // Add OpenStreetMap tile layer to map element
-  var defaultBase = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution:
-  '© OpenStreetMap' }).addTo(map);
-  // Create point feature for Auraria Library
-var myDataPoint = L.marker([39.743119, -105.002959]).addTo(map);
-// Create area feature for campus, style and add to map
-var myArea = L.polygon([[39.740652, -105.010233], [39.743218, -105.011864],
-[39.748473, -105.002487], [39.740283, -104.999037]],
-{color: 'blue', weight: 4}).addTo(map);
-// Bind popup to Data Point object
-myDataPoint.bindPopup("This is Auraria Library.");
-// Bind popup to area object
-myArea.bindPopup("Auraria Campus");
+      // Create variable to hold map element, give initial settings to map
+      var map = L.map('map',{ center: [39.743218, -105.004568], zoom: 14});
+      // Add OpenStreetMap tile layer to map element
+      var defaultBase = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution:
+      '© OpenStreetMap' }).addTo(map);
+      // Create point feature for Auraria Library
+    var myDataPoint = L.marker([39.743119, -105.002959]).addTo(map);
+    // Create area feature for campus, style and add to map
+    var myArea = L.polygon([[39.740652, -105.010233], [39.743218, -105.011864],
+    [39.748473, -105.002487], [39.740283, -104.999037]],
+    {color: 'blue', weight: 4}).addTo(map);
+    // Bind popup to Data Point object
+    myDataPoint.bindPopup("This is Auraria Library.");
+    // Bind popup to area object
+    myArea.bindPopup("Auraria Campus");
 
-// Create an Empty Popup
-var popup = L.popup();
+    // Create an Empty Popup
+    var popup = L.popup();
 
-// Write function to set Properties of the Popup
-function onMapClick(e) {
-popup
-    .setLatLng(e.latlng)
-    .setContent("You clicked the map at " + e.latlng.toString())
-    .openOn(map);
-}
+    // Write function to set Properties of the Popup
+    function onMapClick(e) {
+    popup
+        .setLatLng(e.latlng)
+        .setContent("You clicked the map at " + e.latlng.toString())
+        .openOn(map);
+    }
 
-// Listen for a click event on the Map element
-map.on('click', onMapClick);
+    // Listen for a click event on the Map element
+    map.on('click', onMapClick);
 
-var overlayMaps = {  };
-var baseMaps = { "Default Basemap" : defaultBase };
-var layerControl = L.control.layers(baseMaps,overlayMaps).addTo(map);
-var buildings;
-$.getJSON("buildings.json", function(json) {
-    // add GeoJSON layer to the map once the file is loaded
-    buildings = L.geoJson(json,{
-          onEachFeature: function (feature, layer) {
-            layer.bindPopup("Building Type: " + feature.properties.BLDG_TYPE +
-              "<br>Building Height: " +  feature.properties.BLDG_HEIGH +
-              "<br>Ground Elevation: " + feature.properties.GROUND_ELE);
-          }
-    })
-    console.log("buildings" + buildings);
-    layerControl.addOverlay(buildings, "Buildings");
-});
+    // setup the layer controls
+    var overlayMaps = {  };
+    var baseMaps = { "Default Basemap" : defaultBase };
+    var layerControl = L.control.layers(overlayMaps).addTo(map);
 
+    var buildings;
+    $.getJSON("buildings.json", function(json) {
+        // add GeoJSON layer to the map once the file is loaded
+        buildings = L.geoJson(json,{
+              onEachFeature: function (feature, layer) {
+                layer.bindPopup("Building Type: " + feature.properties.BLDG_TYPE +
+                  "<br>Building Height: " +  feature.properties.BLDG_HEIGH +
+                  "<br>Ground Elevation: " + feature.properties.GROUND_ELE);
+              }
+        })
+        console.log("buildings" + buildings);
+        layerControl.addOverlay(buildings, "Buildings");
+    });
 
-
-//var overlayMaps = { "Buildings" : buildings };
-//var baseMaps = { "Default Basemap" : defaultBase };
-//var layerControl = L.control.layers(baseMaps,overlayMaps).addTo(map);
 
 
 });
