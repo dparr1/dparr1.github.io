@@ -58,7 +58,7 @@ buildings = L.geoJson(data,{
 });
 
 var overlayMaps = { "Buildings" : buildings };
-L.control.layers(overlayMaps).addTo(map);
+L.control.layers({}, overlayMaps).addTo(map);
 
 
 });
