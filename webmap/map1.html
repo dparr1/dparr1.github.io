@@ -45,25 +45,19 @@ popup
 // Listen for a click event on the Map element
 map.on('click', onMapClick);
 
-var mydata;
+
 var buildings;
-$.getJSON("buildings.json")
-    .done( function(json) { mydata = json;
-    console.log("success");
-    console.log("mydata" + mydata);
+$.getJSON("buildings.json", function(json) {
     // add GeoJSON layer to the map once the file is loaded
-    buildings = L.geoJson(mydata,{
+    buildings = L.geoJson(json,{
           onEachFeature: function (feature, layer) {
             layer.bindPopup("Building Type: " + feature.properties.BLDG_TYPE +
               "<br>Building Height: " +  feature.properties.BLDG_HEIGH +
               "<br>Ground Elevation: " + feature.properties.GROUND_ELE);
           }
-    });
-    console.log("buildings" + buildings); } )
-    .fail( function( jqxhr, textStatus, error ) {
-    var err = textStatus + ", " + error;
-    console.log( "Request Failed: " + err ); });
-console.log("mydata" + mydata);
+    })
+});
+
 
 
 var overlayMaps = { "Buildings" : buildings, "Buildings": buildings };
