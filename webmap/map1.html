@@ -47,6 +47,7 @@ map.on('click', onMapClick);
 
 var mydata;
 $.getJSON("buildings.json", function(data) { mydata = data });
+console.log(mydata)
 // add GeoJSON layer to the map once the file is loaded
 var buildings = L.geoJson(mydata,{
       onEachFeature: function (feature, layer) {
@@ -55,7 +56,7 @@ var buildings = L.geoJson(mydata,{
           "<br>Ground Elevation: " + feature.properties.GROUND_ELE);
       }
 });
-
+console.log(buildings);
 
 var overlayMaps = { "Buildings" : buildings, "Buildings": buildings };
 var baseMaps = { "Default Basemap" : defaultBase, "Default" : defaultBase };
