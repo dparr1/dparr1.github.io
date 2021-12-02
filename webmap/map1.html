@@ -31,6 +31,21 @@
       myDataPoint.bindPopup("<h3>This is the Auraria Library.</h3><p>Denver, CO</p>");
       myArea.bindPopup("Auraria Campus");
 
+      // Create a function to return lat and lon from a point
+      var popup = L.popup();
+
+      // Write a function to set properties of the popup
+      function onMapClick(e) {
+        popup
+        .setLatLng(e.latlng)
+        .setContent("You clicked the map at " + e.latlng.toString())
+        .openOn(map);
+      }
+      
+      // Listen for a click event on the map
+      map.on('click', onMapClick);
+
+
     </script>
 
   </body>
