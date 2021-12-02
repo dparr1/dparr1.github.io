@@ -24,11 +24,10 @@
 	            minZoom: 1,
 	            maxZoom: 16,
 	            ext: 'jpg'
-            }
         });
 
 
-        var basemaps = { "Default Basemap:", defaultBase,
+        var basemaps = { "Default Basemap:": defaultBase,
                          "Stamen Watercolor": Stamen_Watercolor };
         var overlays = {};
         var layerMenu = L.control.layers(basemaps, overlays).addTo(map);
