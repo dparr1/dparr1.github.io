@@ -15,7 +15,7 @@
                 background-color: #33FE33;
                 margin-left: auto;
                 margin-right: 0;
-                
+                display: block;
                 width: 200px;
                 
       }
@@ -30,6 +30,19 @@
                font-size: 10px;
                font-family: times;
                position: justified;
+      }
+      #films th { 
+              font: black bold times;
+              background-color: #04AA6D;
+              padding-top: 12px;
+              padding-bottom: 12px;
+              text-align: left;
+              color: white;
+      }
+      #films {
+        font-family: Arial;
+        border-collapse: collapse;
+        width: 100%;
       }
     </style>
   </head>
@@ -67,7 +80,7 @@
     </ul>
 
    <h2>My favorite Star Wars/Star Trek movies</h2>
-    <table>
+    <table id="films"> 
       <tr>
         <th>Film Name</th>
         <th>Description</th>
