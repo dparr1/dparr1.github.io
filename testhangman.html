@@ -49,7 +49,7 @@
                     while (word.includes(letter)) {
                       index = word.indexOf(letter);
                       console.log("index of word is ",index);
-                      word[index] = " ";
+                      word.replace(letter, ' ');
                       blank[index] = letter;
                       $("#word").text(blank);
                       console.log("word is ", word);
