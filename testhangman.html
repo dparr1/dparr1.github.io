@@ -6,7 +6,7 @@
       #alphabet { margin: auto;
                   padding: 20px; }
       #word { margin: auto;
-              font: 200em serif bold;
+              font: 400em serif bold;
               padding: 20px;
             }
       #info { padding: 20px; 
@@ -43,6 +43,7 @@
                     $(this).css("text-decoration", "line-through");
                     foundLetters = foundLetters + letter;
                     console.log("foundLetters is ", foundLetters);
+                    console.log("word is ", word);
 
                     // replace the blanks in the blanks
                     while (word.includes(letter)) {
