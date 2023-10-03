@@ -95,9 +95,14 @@
        $("#clicktoreveal3").click(function() {
           // run this when I click on this button
           console.log("clicked on the 3rd button.");
-          $("#div_ct3").html("Andor");
+          $("#div_ctr3").html("Andor");
        });
 
+       // toggle the photo on and off
+       $("#togglephoto").click(function () {
+         console.log("toggle the photo");
+         $("#myphoto").fadeToggle();
+       });
     // closing the document.ready
      });
   </script>
@@ -116,6 +121,7 @@
       <p class="caption">Dr. David Parr</p>
       <p class="caption">Photo by author</p>
       I teach at <a href="https://www.msudenver.edu">MSU Denver.</a>
+      <button id="togglephoto">Toggle the photo on/off.</button>
     </div>
 
     <div id="thingsIlove">
