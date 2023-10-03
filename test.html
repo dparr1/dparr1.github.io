@@ -79,6 +79,7 @@
       
        // when someone clicks on the photo button, either remove or add the photo
        $("#flipphoto").click(function() {
+         console.log("fade toggle the photo");
          $("#myphoto").fadeToggle();
          // end the click()
        });  
@@ -101,7 +102,7 @@
       <p class="caption">Dr. David Parr</p>
       <p class="caption">Photo by author</p>
       I teach at <a href="https://www.msudenver.edu">MSU Denver.</a>
-      <button id="#flipphoto">Click here to remove the photo</button>
+      <button id="flipphoto">Click here to remove the photo</button>
     </div>
     
     <div id="thingsIlove">
