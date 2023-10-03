@@ -38,8 +38,9 @@
                     $("#info").text("Letter",letter,"already found.");
                   } else {
                     // make a line through the letter
-                    $(this).css("text-decoration: line-through");
+                    $(this).css("text-decoration", "line-through");
                     foundLetters = foundLetters + letter;
+                    console.log("foundLetters is ", foundLetters);
                     
                   }
               });
