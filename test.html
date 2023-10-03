@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My seventh web page.</title>
+  <style>
+     body { width: 100%; }
+     #container {
+       width: 70%;
+       text-align: left;
+       margin: 0px auto;
+     }
+    #photo {
+      background-color: #eefeee;
+      margin-left: auto;
+      margin-right: 0;
+      float: right;
+      width: 200px;
+    }
+    #myphoto {
+      height: auto;
+      width: 150px;
+      border: 1px solid #ddd;
+      border-radius: 50%;
+      padding: 5px;
+      display: block;
+      margin: auto;
+    }
+    .caption {
+      font-size: 10px;
+      font-family: times;
+      text-align: center;
+    }
+    p, td, li { 
+      font-size: 10px;
+      font-family: times;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: times;
+      background-color: #fefeee;
+    }
+    a { text-decoration: none; }
+    a:visited { background-color: #feeeee; }
+    a:link { background-color: #eeeefe; }
+    a:hover { background-color: #fefeee; }
+
+    #thingsIlove { 
+      background-color: #fefddd;
+    }
+
+    #films {
+      font-family: Arial;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    #films th, #films td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    #films th {
+       font: black bold times;
+       background-color: #04aa6d;
+       padding-top: 12px;
+       padding-bottom: 12px;
+       text-align: left;
+       color: white;
+    }
+
+    #films tr:nth-child(even) { background-color: #f2f2f2; }
+
+    #classes { background-color: #eeeefe; }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script>
+    $("#flipphoto").click(function() {
+      $("#photo").fadeToggle();
+    });
+  </script>
+  </head>
+  <body>
+  <div id="container">
+    <h1>My fourth web page! Hooray!</h1>
+    
+       <p>This is the sixth lab for GIS 3410, Web Mapping, from MSU Denver. </p>
+
+    
+    <h3>About Me</h3>
+
+    <div id="photo">
+      <img id="myphoto" src="myphoto.jpg" />
+      <p class="caption">Dr. David Parr</p>
+      <p class="caption">Photo by author</p>
+      I teach at <a href="https://www.msudenver.edu">MSU Denver.</a>
+    </div>
+    <button id="#flipphoto">Click here to remove the photo</button>
+
+    <div id="thingsIlove">
+     <p>Here are the three things that I love the most: </p>
+     <ol>
+       <li>My Wife</li>
+       <li>My Dog</li>
+       <li>Coffee</li>
+     </ol>
+    </div>
+
+    <div id="classes">
+    <p>Some other things about me - I teach the following classes:</p>
+    <ul>
+      <li>Web Mapping</li>
+      <li>GIS</li>
+      <li>Spatial Modeling</li>
+      <li>GIS Programming</li>
+      <li>GIS Applications</li>
+      <li>Spatial Databases</li>
+      <li>Cartography</li>
+      <li>GIS Data</li>
+      <li>Intro to Geospatial Sciences</li>
+    </ul>
+    </div>
+
+   <h2>My favorite Star Wars/Star Trek movies</h2>
+    <table id="films">
+      <tr>
+        <th>Film Name</th>
+        <th>Description</th>
+        <th>Rating</th>
+      </tr>
+      <tr>
+        <td>Return of the Jedi</td>
+        <td>Ewoks do some damage.</td>
+        <td>3 stars</td>
+      </tr>
+      <tr>
+        <td>Star Trek 4: The Voyage Home</td>
+        <td>Thar be whales there!</td>
+        <td>4 stars</td>
+      </tr>
+      <tr>
+        <td>Andor</td>
+        <td>Tense and suspenseful</td>
+        <td>5 and a half stars</td>
+      </tr>
+    </table>
+  </div>
+  </body>
+</html>
