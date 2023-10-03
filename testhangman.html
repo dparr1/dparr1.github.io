@@ -25,7 +25,7 @@
 
               // this is the number of tries left
               tries = 10;
-              $("#guesses").text("Guesses left: ",tries);
+              $("#guesses").text("Guesses left: "+tries);
                    
               // when a user clicks on a letter... this is where everything happens!
               $(".letter").click( function() {
@@ -35,12 +35,16 @@
 
                   // if the letter has already been clicked...
                   if (foundLetters.includes(letter)) {
-                    $("#info").text("Letter",letter,"already found.");
+                    $("#info").text("Letter "+letter+" already found.");
                   } else {
                     // make a line through the letter
                     $(this).css("text-decoration", "line-through");
                     foundLetters = foundLetters + letter;
                     console.log("foundLetters is ", foundLetters);
+
+                    // replace the blanks in the blanks
+                    indexes = word.indexOf(letter);
+                    console.log("index of word is ",indexes);
                     
                   }
               });
