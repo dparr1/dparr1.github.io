@@ -34,7 +34,7 @@
                   console.log("clicked on ", letter);
 
                   // if the letter has already been clicked...
-                  if (letter in foundLetters) {
+                  if (foundLetters.includes(letter)) {
                     $("#info").text("Letter",letter,"already found.");
                   } else {
                     // make a line through the letter
