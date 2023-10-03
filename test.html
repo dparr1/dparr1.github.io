@@ -84,6 +84,25 @@
          // end the click()
        });  
 
+      // click to reveal 1
+      $("#clicktoreveal1").click(function() {
+        console.log("click to reveal 1");
+        $("clicktoreveal1").html("<p>Return of the Jedi</p>");
+      });
+
+      // click to reveal 2
+      $("#clicktoreveal2").click(function() {
+        console.log("click to reveal 2");
+        $("clicktoreveal2").html("<p>Star Trek 4: The Voyage Home</p>");
+      });
+
+
+      // click to reveal 3
+      $("#clicktoreveal3").click(function() {
+        console.log("click to reveal 3");
+        $("clicktoreveal3").html("<p>Andor</p>");
+      });
+
      // end the document.ready
     });
   </script>
@@ -137,17 +156,17 @@
         <th>Rating</th>
       </tr>
       <tr>
-        <td>Return of the Jedi</td>
+        <td><button id="clicktoreveal1">Click to Reveal...</button></td>
         <td>Ewoks do some damage.</td>
         <td>3 stars</td>
       </tr>
       <tr>
-        <td>Star Trek 4: The Voyage Home</td>
+        <td><button id="clicktoreveal2">Click to Reveal...</button></td>
         <td>Thar be whales there!</td>
         <td>4 stars</td>
       </tr>
       <tr>
-        <td>Andor</td>
+        <td><button id="clicktoreveal3">Click to Reveal...</button></td>
         <td>Tense and suspenseful</td>
         <td>5 and a half stars</td>
       </tr>
