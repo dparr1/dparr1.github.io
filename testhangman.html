@@ -10,7 +10,9 @@
               padding: 20px;
             }
       #info { padding: 20px; 
-              font: red; }
+              font-color: red;
+              background-color: yellow; 
+            }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
@@ -43,8 +45,21 @@
                     console.log("foundLetters is ", foundLetters);
 
                     // replace the blanks in the blanks
-                    indexes = word.indexOf(letter);
-                    console.log("index of word is ",indexes);
+                    while (word.includes(letter)) {
+                      index = word.indexOf(letter);
+                      console.log("index of word is ",index);
+                      word[index] = "-";
+                      blank[index] = letter;
+                      $("#word").text(blank);
+                    }
+
+                    tries = tries - 1;
+                    $("#guesses").text("Guesses left: "+tries);
+                    if (tries < 1) {
+                      
+                    }
+
+
                     
                   }
               });
