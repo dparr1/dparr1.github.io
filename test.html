@@ -75,11 +75,11 @@
   <script>
     
     // wait until the document is fully loaded to add the javascript
-    $(document).ready() {
+    $(document).ready(function() {
       
        // when someone clicks on the photo button, either remove or add the photo
        $("#flipphoto").click(function() {
-         $("#photo").fadeToggle();
+         $("#myphoto").fadeToggle();
          // end the click()
        });  
 
@@ -101,9 +101,9 @@
       <p class="caption">Dr. David Parr</p>
       <p class="caption">Photo by author</p>
       I teach at <a href="https://www.msudenver.edu">MSU Denver.</a>
+      <button id="#flipphoto">Click here to remove the photo</button>
     </div>
-    <button id="#flipphoto">Click here to remove the photo</button>
-
+    
     <div id="thingsIlove">
      <p>Here are the three things that I love the most: </p>
      <ol>
