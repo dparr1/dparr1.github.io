@@ -3,18 +3,23 @@
   <head>
     <title>Hangman!</title>
     <style>
-      
+      #alphabet { margin: auto; }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
          $(document).ready( function() {
-
+              $(".letter").click( function() {
+                  // use text to get letter
+                  letter = $(self).text();
+                  console.log("clicked on ", letter);
+              });
            
          });
       
     </script>
   </head>
   <body>
+     <div id="alphabet">
      <span class="letter" id="a">a</span>
      <span class="letter" id="b">b</span>
      <span class="letter" id="c">c</span>
@@ -41,5 +46,6 @@
      <span class="letter" id="x">x</span>
      <span class="letter" id="y">y</span>
      <span class="letter" id="z">z</span>  
+     </div>
   </body>
 </html>
