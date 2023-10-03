@@ -49,9 +49,11 @@
                     while (word.includes(letter)) {
                       index = word.indexOf(letter);
                       console.log("index of word is ",index);
-                      word[index] = "-";
+                      word[index] = " ";
                       blank[index] = letter;
                       $("#word").text(blank);
+                      console.log("word is ", word);
+                      console.log("blank is ", blank);
                     }
 
                     tries = tries - 1;
