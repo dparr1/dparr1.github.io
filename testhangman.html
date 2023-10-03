@@ -4,21 +4,42 @@
     <title>Hangman!</title>
     <style>
       #alphabet { margin: auto; }
+      #word { margin: auto;
+              font: 200em serif bold;
+            }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
          $(document).ready( function() {
+              // this is the secret word!
+              word = "b u m b l e b e e";
+
+              // this is the list of letters that have been found
+              foundLetters = "";
+
+              // this is the number of tries left
+              tries = 10;
+              $("#guesses").text("Guesses left: ",tries);
+          
+
+           
+              // when a user clicks on a letter
               $(".letter").click( function() {
                   // use text to get letter
                   letter = $(this).text();
                   console.log("clicked on ", letter);
               });
+
+             // 
            
          });
       
     </script>
   </head>
   <body>
+     <div id="guesses"></div>
+     <div id="info"></div>
+     <div id="word"></div>
      <div id="alphabet">
      <span class="letter" id="a">a</span>
      <span class="letter" id="b">b</span>
