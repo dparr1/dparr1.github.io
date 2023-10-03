@@ -73,8 +73,17 @@
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script>
-    $("#flipphoto").click(function() {
-      $("#photo").fadeToggle();
+    
+    // wait until the document is fully loaded to add the javascript
+    $(document).ready() {
+      
+       // when someone clicks on the photo button, either remove or add the photo
+       $("#flipphoto").click(function() {
+         $("#photo").fadeToggle();
+         // end the click()
+       });  
+
+     // end the document.ready
     });
   </script>
   </head>
