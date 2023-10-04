@@ -28,44 +28,56 @@
               // this is the number of tries left
               tries = 10;
               $("#guesses").text("Guesses left: "+tries);
+
+              // boolean (true / false variable) to track if game has been won
+              gameWon = false;
+              gameLost = false;
                    
               // when a user clicks on a letter... this is where everything happens!
               $(".letter").click( function() {
-                  // use text to get letter
-                  letter = $(this).text();
-                  console.log("clicked on ", letter);
 
-                  // if the letter has already been clicked...
-                  if (foundLetters.includes(letter)) {
-                    $("#info").text("Letter "+letter+" already found.");
-                  } else {
-                    // make a line through the letter
-                    $(this).css("text-decoration", "line-through");
-                    foundLetters = foundLetters + letter;
-                    console.log("foundLetters is ", foundLetters);
-                    console.log("word is ", word);
+                  if (not gameWon and not gameLost) {
+                    // erase the info box
+                    $("#info").text("");
+                
+                    // use text to get letter
+                    letter = $(this).text();
+                    console.log("clicked on ", letter);
 
-                    // replace the blanks in the blanks
-                    while (word.includes(letter)) {
-                      index = word.indexOf(letter);
-                      console.log("index of word is ",index);
-                      word = word.substring(0, index) + " " + word.substring((index + 1));
-                      blank = blank.substring(0,index) + letter + blank.substring((index + 1));
-                      
-                      $("#word").text(blank);
+                    // if the letter has already been clicked...
+                    if (foundLetters.includes(letter)) {
+                      $("#info").text("Letter "+letter+" already found.");
+                    } else {
+                      // make a line through the letter
+                      $(this).css("text-decoration", "line-through");
+                      foundLetters = foundLetters + letter;
+                      console.log("foundLetters is ", foundLetters);
                       console.log("word is ", word);
-                      console.log("blank is ", blank);
-                    }
 
-                    tries = tries - 1;
-                    $("#guesses").text("Guesses left: "+tries);
-                    if (tries < 1) {
+                      // replace the blanks in the blanks
+                      while (word.includes(letter)) {
+                        index = word.indexOf(letter);
+                        console.log("index of word is ",index);
+                        word = word.substring(0, index) + " " + word.substring((index + 1));
+                        blank = blank.substring(0,index) + letter + blank.substring((index + 1));
                       
+                        $("#word").text(blank);
+                        console.log("word is ", word);
+                        console.log("blank is ", blank);
+                      }
+
+                      tries = tries - 1;
+                      $("#guesses").text("Guesses left: "+tries);
+                      if (tries < 1) {
+                        gameLost = true;
+                        $("#info").text("Sorry, you're out of guesses. YOU LOSE!");
+                      }
+
+                      if (not blank.includes("-")) {
+                         gameWon = true;
+                         $("#info").text("You won! Great job!");
+                      }
                     }
-
-
-                    
-                  }
               });
 
              // 
