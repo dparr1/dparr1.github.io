@@ -29,14 +29,14 @@
               tries = 10;
               $("#guesses").text("Guesses left: "+tries);
 
-              // boolean (true / false variable) to track if game has been won
+              // boolean (true / false variable) to track if game has been won or lost
               gameWon = false;
               gameLost = false;
                    
               // when a user clicks on a letter... this is where everything happens!
               $(".letter").click( function() {
 
-                  if (not gameWon and not gameLost) {
+                  if (! gameWon and ! gameLost) {
                     // erase the info box
                     $("#info").text("");
                 
