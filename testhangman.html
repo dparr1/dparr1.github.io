@@ -36,7 +36,7 @@
               // when a user clicks on a letter... this is where everything happens!
               $(".letter").click( function() {
 
-                  if (! gameWon and ! gameLost) {
+                  if (gameWon != true && ! gameLost != true) {
                     // erase the info box
                     $("#info").text("");
                 
@@ -87,6 +87,7 @@
     </script>
   </head>
   <body>
+     <h1>Let's play Hangman!</h1>
      <div id="guesses"></div>
      <div id="info"></div>
      <div id="word"></div>
