@@ -49,8 +49,10 @@
                     // let the user know it's already been found
                     if (foundLetters.includes(letter)) {
                       $("#info").text("Letter "+letter+" already found.");
+                      
                     // otherwise, put a line through it and
                     // add it to the found letters
+                    // and check if the player won or lost
                     } else {
                       // make a line through the letter
                       $(this).css("text-decoration", "line-through");
@@ -87,7 +89,7 @@
                       else if (tries < 1) {
                         gameLost = true;
                         $("#info").text("Sorry, you're out of guesses. YOU LOSE!");
-                      
+                      }
                     }
                   }
               });
