@@ -22,8 +22,8 @@
               blank = "- - - - - - - - -";
               $("#word").text(blank);
 
-              // this is the list of letters that have been found
-              foundLetters = "";
+              // this is the list of letters that have been tried
+              triedLetters = "";
 
               // this is the number of tries left
               tries = 10;
@@ -45,16 +45,13 @@
                     letter = $(this).text();
                     console.log("clicked on ", letter);
 
-                      // make a line through the letter
-                      $(this).css("text-decoration", "line-through");
-                      foundLetters = foundLetters + letter;
-                      console.log("foundLetters is ", foundLetters);
-                      console.log("word is ", word);
+                    // make a line through the letter
+                    $(this).css("text-decoration", "line-through");
 
                     // if the letter has already been clicked on, 
-                    // let the user know it's already been found
-                    if (foundLetters.includes(letter)) {
-                      $("#info").text("Letter "+letter+" already found.");
+                    // let the user know it's already been tried
+                    if (triedLetters.includes(letter)) {
+                      $("#info").text("Letter "+letter+" already tried.");
 
                     // if the letter isn't in the word, reduce
                     // the number of tries and check if they lost
@@ -98,6 +95,11 @@
                       }
 
                     }
+
+                    // add the letter to letters already tried
+                    triedLetters = triedLetters + letter;
+                    console.log("triedLetters is ", foundLetters);
+                    console.log("word is ", word);
                   }
               });
 
