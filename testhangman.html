@@ -22,8 +22,8 @@
               blank = "- - - - - - - - -";
               $("#word").text(blank);
 
-              // this is the list of letters that have been found
-              foundLetters = "";
+              // this is the list of letters that have been tried
+              triedLetters = "";
 
               // this is the number of tries left
               tries = 10;
@@ -36,25 +36,47 @@
               // when a user clicks on a letter... this is where everything happens!
               $(".letter").click( function() {
 
+                  // check if the game has been won or lost
                   if (gameWon != true && gameLost != true) {
                     // erase the info box
                     $("#info").text("");
                 
-                    // use text to get letter
+                    // use text to get the letter that was clicked on
                     letter = $(this).text();
                     console.log("clicked on ", letter);
 
-                    // if the letter has already been clicked...
-                    if (foundLetters.includes(letter)) {
-                      $("#info").text("Letter "+letter+" already found.");
-                    } else {
-                      // make a line through the letter
-                      $(this).css("text-decoration", "line-through");
-                      foundLetters = foundLetters + letter;
-                      console.log("foundLetters is ", foundLetters);
-                      console.log("word is ", word);
+                    // make a line through the letter
+                    $(this).css("text-decoration", "line-through");
 
-                      // replace the blanks in the blanks
+                    // if the letter has already been clicked on, 
+                    // let the user know it's already been tried
+                    if (triedLetters.includes(letter)) {
+                      $("#info").text("Letter "+letter+" already tried.");
+
+                    // if the letter isn't in the word, reduce
+                    // the number of tries and check if they lost
+                    } else if (! word.includes(letter)) {
+
+                      // reduce the number of remaining tries by 1
+                      tries = tries - 1;
+                      $("#guesses").text("Mistakes left: "+tries);
+
+                      // are they out of tries? then they lost!
+                      if (tries < 1) {
+                        gameLost = true;
+                        $("#info").text("Sorry, you're out of guesses. YOU LOSE!");
+                      }
+                    
+                    
+                    // otherwise, put a line through it and
+                    // add it to the found letters
+                    // and check if the player won or lost
+                    } else {
+
+                      // replace the blanks in the blanks variable 
+                      // with the letter that was clicked on
+                      // replace the blanks with letter in blank
+                      // and replace the letters with blanks in word
                       while (word.includes(letter)) {
                         index = word.indexOf(letter);
                         console.log("index of word is ",index);
@@ -65,19 +87,19 @@
                         console.log("word is ", word);
                         console.log("blank is ", blank);
                       }
-
-                      tries = tries - 1;
-                      $("#guesses").text("Guesses left: "+tries);
-                      if (tries < 1) {
-                        gameLost = true;
-                        $("#info").text("Sorry, you're out of guesses. YOU LOSE!");
-                      }
-
+                     
+                      // check if the player has won the game
                       if (! blank.includes("-")) {
                          gameWon = true;
-                         $("#info").text("You won! Great job!");
+                         $("#info").text("You WON! Great job!");
                       }
+
                     }
+
+                    // add the letter to letters already tried
+                    triedLetters = triedLetters + letter;
+                    console.log("triedLetters is ", triedLetters);
+                    console.log("word is ", word);
                   }
               });
 
