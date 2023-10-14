@@ -49,7 +49,22 @@
                     // let the user know it's already been found
                     if (foundLetters.includes(letter)) {
                       $("#info").text("Letter "+letter+" already found.");
-                      
+
+                    // if the letter isn't in the word, reduce
+                    // the number of tries and check if they lost
+                    } else if (! word.includes(letter)) {
+
+                      // reduce the number of remaining tries by 1
+                      tries = tries - 1;
+                      $("#guesses").text("Mistakes left: "+tries);
+
+                      // are they out of tries? then they lost!
+                      if (tries < 1) {
+                        gameLost = true;
+                        $("#info").text("Sorry, you're out of guesses. YOU LOSE!");
+                      }
+                    }
+                    
                     // otherwise, put a line through it and
                     // add it to the found letters
                     // and check if the player won or lost
@@ -74,22 +89,13 @@
                         console.log("word is ", word);
                         console.log("blank is ", blank);
                       }
-
-                      // reduce the number of remaining tries by 1
-                      tries = tries - 1;
-                      $("#guesses").text("Guesses left: "+tries);
-                      
+                     
                       // check if the player has won the game
                       if (! blank.includes("-")) {
                          gameWon = true;
                          $("#info").text("You WON! Great job!");
                       }
-                      // check if the player is out of tries
-                      // and has lost
-                      else if (tries < 1) {
-                        gameLost = true;
-                        $("#info").text("Sorry, you're out of guesses. YOU LOSE!");
-                      }
+
                     }
                   }
               });
