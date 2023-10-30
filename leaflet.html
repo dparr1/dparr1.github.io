@@ -37,7 +37,7 @@
 
 	const map = L.map('map').setView([39.7, -105.0], 13);
 
-        import acs_denver_2021 from './acs_denver_2021.geojson';
+        import acs_denver_2021 from './acs_denver_2021.geojson' assert { type : 'json' };
 	console.log(acs_denver_2021);
 	
 	var acs_denver_2021 = L.GeoJSON.AJAX("acs_denver_2021.geojson").addTo(map);
