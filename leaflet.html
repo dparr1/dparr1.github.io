@@ -44,11 +44,13 @@
 		$.getJSON('./acs_denver_2021.geojson', function(data) {
 			acs_denver_2021_layer = L.geoJSON(data).addTo(map);
 			console.log(data);
-			bounds = acs_denver_2021_layer.getBounds();
-			console.log(bounds.getCenter());
-			map.setView([bounds.getCenter()],13);
+			bounds = [acs_denver_2021_layer.getBounds().getCenter().lng, acs_denver_2021_layer.getBounds().getCenter().lat];
+			console.log(bounds);
+			map.setView(bounds,13);
 		});
 
+		// $.getJSON('https://gisdata.drcog.org:8443/geoserver/DRCOGPUB/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=DRCOGPUB:bridges_low_clearance&outputFormat=application%2Fjson');
+		
 		const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 			maxZoom: 19,
 			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
