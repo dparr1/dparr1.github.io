@@ -44,7 +44,7 @@
 		$.getJSON('./acs_denver_2021.geojson', function(data) {
 			acs_denver_2021_layer = L.geoJSON(data).addTo(map);
 			console.log(data);
-			bounds = [acs_denver_2021_layer.getBounds().getCenter().lat, acs_denver_2021_layer.getBounds().getCenter().lng];
+			bounds = [acs_denver_2021_layer.getBounds().getCenter().lng, acs_denver_2021_layer.getBounds().getCenter().lat];
 			console.log(bounds);
 			map.setView(bounds,13);
 		});
