@@ -46,7 +46,7 @@
 			console.log(data);
 			bounds = [acs_denver_2021_layer.getBounds().getCenter().lng, acs_denver_2021_layer.getBounds().getCenter().lat];
 			console.log(bounds);
-			map.setView(bounds,13);
+			map.setView(acs_denver_2021_layer.getBounds().getCenter(),13);
 		});
 
 		// $.getJSON('https://gisdata.drcog.org:8443/geoserver/DRCOGPUB/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=DRCOGPUB:bridges_low_clearance&outputFormat=application%2Fjson');
