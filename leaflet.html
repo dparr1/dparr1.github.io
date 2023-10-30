@@ -12,7 +12,6 @@
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <script src="leaflet.ajax.min.js"></script>
 
 	<style>
 		html, body {
@@ -37,7 +36,12 @@
 <script>
 
 	const map = L.map('map').setView([39.7, -105.0], 13);
+
+        import acs_denver_2021 from './acs_denver_2021.geojson';
+	console.log(acs_denver_2021);
+	
 	var acs_denver_2021 = L.GeoJSON.AJAX("acs_denver_2021.geojson").addTo(map);
+	L.geoJSON(acs_denver_2021).addTo(map);
 
 	const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		maxZoom: 19,
