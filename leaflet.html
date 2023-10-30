@@ -45,6 +45,7 @@
 			acs_denver_2021_layer = L.geoJSON(data).addTo(map);
 			console.log(data);
 			 bounds = acs_denver_2021_layer.getBounds();
+			 console.log(bounds);
 			 x = (bounds[0][0] + bounds[1][0]) / 2.0;
 			 y = (bounds[0][1] + bounds[1][1]) / 2.0;
 			 map.setView([x,y],13);
