@@ -45,7 +45,8 @@
 			acs_denver_2021_layer = L.geoJSON(data).addTo(map);
 			console.log(data);
 			bounds = acs_denver_2021_layer.getBounds();
-			map.setView(bounds.getCenter(),13);
+			console.log(bounds.getCenter());
+			map.setView([bounds.getCenter()],13);
 		});
 
 		const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
