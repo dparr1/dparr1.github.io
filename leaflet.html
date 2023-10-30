@@ -43,7 +43,7 @@
 		var acs_denver_2021_layer = L.geoJSON(acs_denver_2021).addTo(map);
 		console.log(acs_denver_2021);
 	} else {
-		console.log('could not read file');
+		console.log('could not read file'+ response.text());
 	}
 
 	const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
