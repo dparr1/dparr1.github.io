@@ -37,7 +37,7 @@
 <script>
 
 	const map = L.map('map').setView([39.7, -105.0], 13);
-	var acs_denver_2021 = L.geoJson("acs_denver_2021.geojson").addTo('map');
+	var acs_denver_2021 = L.geoJSON.AJAX("acs_denver_2021.geojson").addTo('map');
 
 	const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		maxZoom: 19,
