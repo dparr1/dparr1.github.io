@@ -37,11 +37,13 @@
 
 	const map = L.map('map').setView([39.7, -105.0], 13);
 
-        import acs_denver_2021 from './acs_denver_2021.geojson' assert { type : 'json' };
+	let response = await fetch("./acs_denver_2021.geojson");
+	if (response.ok) {
+		let acs_denver_2021 = await response.json();
+	}
 	console.log(acs_denver_2021);
 	
-	var acs_denver_2021 = L.GeoJSON.AJAX("acs_denver_2021.geojson").addTo(map);
-	L.geoJSON(acs_denver_2021).addTo(map);
+	var acs_denver_2021_layer = L.geoJSON(acs_denver_2021).addTo(map);
 
 	const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		maxZoom: 19,
