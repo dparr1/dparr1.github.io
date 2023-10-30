@@ -38,11 +38,16 @@
 <script>
 
 	$(document).ready(function() {
-		const map = L.map('map').setView([-105, 39.7], 13);
+		const map = L.map('map');
+		//.setView([-105, 39.7], 13);
 
 		$.getJSON('./acs_denver_2021.geojson', function(data) {
 			acs_denver_2021_layer = L.geoJSON(data).addTo(map);
 			console.log(data);
+			 bounds = acs_denver_2021_layer.getBounds();
+			 x = (bounds[0][0] + bounds[1][0]) / 2.0;
+			 y = (bounds[0][1] + bounds[1][1]) / 2.0;
+			 map.setView([x,y],13);
 		});
 
 		const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
