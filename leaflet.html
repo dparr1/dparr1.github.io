@@ -37,7 +37,7 @@
 
 	const map = L.map('map').setView([39.7, -105.0], 13);
 
-	let response = fetch("./acs_denver_2021.geojson");
+	let response = fetch("https://dparr1.github.io/acs_denver_2021.geojson");
 	if (response.ok) {
 		let acs_denver_2021 = response.json();
 		var acs_denver_2021_layer = L.geoJSON(acs_denver_2021).addTo(map);
