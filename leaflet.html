@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-	<title>Quick Start - Leaflet</title>
+	<title>Lab 8 - Denver Neighborhood Data/title>
 	
 	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
 
@@ -20,12 +19,6 @@
 			height: 100%;
 			margin: 0;
 		}
-		.leaflet-container {
-			height: 400px;
-			width: 600px;
-			max-width: 100%;
-			max-height: 100%;
-		}
 		
 		#map { width:100%; height: 70%; }
 		
@@ -35,7 +28,7 @@
 		    }
 		
 		p { font: serif 10px;
-		   color: #3293a8;
+		    color: #3293a8;
 		  }
 		
 		#header {
@@ -69,24 +62,31 @@
 			maxZoom: 19,
 			attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'});
 
+		// this is an object to keep track of our three basemaps
 		var baseMaps = { "OpenStreetMap" : OSMTiles,
 				 "Humanitarian OSM" : HOTOSMTiles,
 			         "OpenTopoMap" : OpenTopoMap };
+
+		// the control let's the user turn on / off layers
 		var layerControl = L.control.layers(baseMaps,null).addTo(map);
 
 		// let's add the Denver ACS data
 		$.getJSON('./acs_denver_2021.geojson', function(data) {
+			// convert the file into a layer
 			acsDenver2021Layer = L.geoJSON(data).addTo(map);
-			console.log(data);
+
+			// move the map to the area of the data
 			map.panTo(acsDenver2021Layer.getBounds().getCenter());
-			console.log(acsDenver2021Layer);
+			
+			// add the layer to the layercontrol
 			layerControl.addOverlay(acsDenver2021Layer, "Census 2021");
 		});
 
-		// let's try to add the DRCOG data
+		// let's try to add some remote DRCOG data
 		$.getJSON('https://data.colorado.gov/api/geospatial/trm9-dm4m?method=export&format=GeoJSON', function(data) {
 			newLayer = L.geoJSON(data);
-			console.log(data);
+
+			// add the layer to the layercontrol
 			layerControl.addOverlay(newLayer, "Highway Markers");
 		});
 
