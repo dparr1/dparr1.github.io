@@ -38,15 +38,14 @@
 <script>
 
 	$(document).ready(function() {
-		var map = L.map('map');
-		//.setView([-105, 39.7], 13);
+		var map = L.map('map').setView([-105, 39.7], 13);
 
 		$.getJSON('./acs_denver_2021.geojson', function(data) {
 			acs_denver_2021_layer = L.geoJSON(data);
 			console.log(data);
 			bounds = [acs_denver_2021_layer.getBounds().getCenter().lng, acs_denver_2021_layer.getBounds().getCenter().lat];
 			console.log(acs_denver_2021_layer.getBounds().getCenter());
-			map.setView({center: [acs_denver_2021_layer.getBounds().getCenter()],zoom: 13});
+			map.setView({center: bounds,zoom: 13});
 			acs_denver_2021_layer.addTo(map);
 		});
 
