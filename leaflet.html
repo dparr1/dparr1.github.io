@@ -74,7 +74,7 @@
 		$.getJSON('./acs_denver_2021.geojson', function(data) {
 			acsDenver2021Layer = L.geoJSON(data,
 						       { style: function(feature) {
-							        color: getColor(feature.properties."PCT_POVERTY")
+							        color: getColor(feature.properties.pct_poverty)
 						       }
 						}).addTo(map);
 			console.log(data);
