@@ -46,7 +46,7 @@
 			bounds = [acs_denver_2021_layer.getBounds().getCenter().lat, acs_denver_2021_layer.getBounds().getCenter().lng];
 			console.log(acs_denver_2021_layer.getBounds().getCenter());
 			console.log(bounds);
-			map.setView(bounds, 13);
+			map.panTo(acs_denver_2021_layer.getBounds().getCenter());
 			acs_denver_2021_layer.addTo(map);
 		});
 
