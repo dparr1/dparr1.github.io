@@ -72,9 +72,11 @@
 		
 		// let's add the Denver ACS data
 		$.getJSON('./acs_denver_2021.geojson', function(data) {
-			acsDenver2021Layer = L.geoJSON(datastyle: function(feature) {
-							color: getColor(feature.properties.PCT_POVERTY);
-						}).addTo(map);
+			acsDenver2021Layer = L.geoJSON(data,
+						       { style: function(feature) {
+							        color: getColor(feature.properties.PCT_POVERTY)
+						       }
+						})).addTo(map);
 			console.log(data);
 			map.panTo(acsDenver2021Layer.getBounds().getCenter());
 			console.log(acsDenver2021Layer);
