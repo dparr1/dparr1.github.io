@@ -64,17 +64,17 @@
 		var HOTOSMTiles = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
 			maxZoom: 19,
     			attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'});
+		var openTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+			maxZoom: 19,
+			attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'});
 
 		var baseMaps = { "OpenStreetMap" : OSMTiles,
-				 "Humanitarian OSM" : HOTOSMTiles };
+				 "Humanitarian OSM" : HOTOSMTiles,
+			         "OpenTopoMap" : OpenTopoMap };
 		var layers = { "Census 2021" : acs_denver_2021_layer,
 			       "Other": newLayer };
 		var layerControl = L.control.layers(baseMaps,lyaers).addTo(map);
 
-		var info = L.control();
-		info.onAdd = function (map) {
-			this._div = L.DomUtil.create('div','info'
-		
 		var marker = L.marker([51.5, -0.09]).addTo(map)
 			.bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
 
