@@ -47,7 +47,7 @@
 			console.log(data);
 			map.panTo(acsDenver2021Layer.getBounds().getCenter());
 		});
-		console.log(acs_denver_2021_layer);
+		console.log(acsDevnver2021Layer);
 
 		// let's try to add the DRCOG data
 		$.getJSON('https://gisdata.drcog.org:8443/geoserver/DRCOGPUB/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=DRCOGPUB:bridges_low_clearance&outputFormat=application%2Fjson', function(data) {
@@ -69,7 +69,7 @@
 		var baseMaps = { "OpenStreetMap" : OSMTiles,
 				 "Humanitarian OSM" : HOTOSMTiles,
 			         "OpenTopoMap" : OpenTopoMap };
-		var myLayers = { "Census 2021" : acs_denver_2021_layer };
+		var myLayers = { "Census 2021" : acsDenver2021Layer };
 		var layerControl = L.control.layers(baseMaps,null).addTo(map);
 		layerControl.addOverlay(acsDenver2021Layer, "Census 2021");
 
