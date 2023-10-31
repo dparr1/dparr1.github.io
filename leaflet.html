@@ -38,19 +38,17 @@
 <script>
 
 	$(document).ready(function() {
-		var map = L.map('map').setView([-105, 39.7], 13);
+		var map = L.map('map').setView([0, 0], 8);
 
 		$.getJSON('./acs_denver_2021.geojson', function(data) {
-			acs_denver_2021_layer = L.geoJSON(data);
+			acs_denver_2021_layer = L.geoJSON(data).addTo(map);
 			console.log(data);
-			bounds = [acs_denver_2021_layer.getBounds().getCenter().lat, acs_denver_2021_layer.getBounds().getCenter().lng];
-			console.log(acs_denver_2021_layer.getBounds().getCenter());
-			console.log(bounds);
 			map.panTo(acs_denver_2021_layer.getBounds().getCenter());
-			acs_denver_2021_layer.addTo(map);
 		});
 
-		// $.getJSON('https://gisdata.drcog.org:8443/geoserver/DRCOGPUB/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=DRCOGPUB:bridges_low_clearance&outputFormat=application%2Fjson');
+		$.getJSON('https://gisdata.drcog.org:8443/geoserver/DRCOGPUB/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=DRCOGPUB:bridges_low_clearance&outputFormat=application%2Fjson', function(data) {
+			newLayer = L.geoJSON(data).addTo(map);
+		});
 		
 		var tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 			maxZoom: 19,
