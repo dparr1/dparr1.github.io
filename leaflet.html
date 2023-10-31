@@ -40,20 +40,7 @@
 
 		// let's create our basemap!
 		map = L.map('map').setView([0, 0], 10);
-		
-		// let's add the Denver ACS data
-		$.getJSON('./acs_denver_2021.geojson', function(data) {
-			acsDenver2021Layer = L.geoJSON(data).addTo(map);
-			console.log(data);
-			map.panTo(acsDenver2021Layer.getBounds().getCenter());
-		});
-		console.log(acsDenver2021Layer);
 
-		// let's try to add the DRCOG data
-		$.getJSON('https://gisdata.drcog.org:8443/geoserver/DRCOGPUB/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=DRCOGPUB:bridges_low_clearance&outputFormat=application%2Fjson', function(data) {
-			newLayer = L.geoJSON(data).addTo(map);
-		});
-		
 		// let's add two sets of background tiles - one from OSM and one from HOT OSM
 		var OSMTiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 			maxZoom: 19,
@@ -69,40 +56,23 @@
 		var baseMaps = { "OpenStreetMap" : OSMTiles,
 				 "Humanitarian OSM" : HOTOSMTiles,
 			         "OpenTopoMap" : OpenTopoMap };
-		var myLayers = { "Census 2021" : acsDenver2021Layer };
 		var layerControl = L.control.layers(baseMaps,null).addTo(map);
-		layerControl.addOverlay(acsDenver2021Layer, "Census 2021");
-
-		var marker = L.marker([51.5, -0.09]).addTo(map)
-			.bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
-
-		var circle = L.circle([51.508, -0.11], {
-			color: 'red',
-			fillColor: '#f03',
-			fillOpacity: 0.5,
-			radius: 500
-		}).addTo(map).bindPopup('I am a circle.');
-
-		var polygon = L.polygon([
-			[51.509, -0.08],
-			[51.503, -0.06],
-			[51.51, -0.047]
-		]).addTo(map).bindPopup('I am a polygon.');
-
-
-		var popup = L.popup()
-			.setLatLng([51.513, -0.09])
-			.setContent('I am a standalone popup.')
-			.openOn(map);
-
-		function onMapClick(e) {
-			popup
-				.setLatLng(e.latlng)
-				.setContent(`You clicked the map at ${e.latlng.toString()}`)
-				.openOn(map);
-		}
-
-		map.on('click', onMapClick);
+		
+		// let's add the Denver ACS data
+		$.getJSON('./acs_denver_2021.geojson', function(data) {
+			acsDenver2021Layer = L.geoJSON(data).addTo(map);
+			console.log(data);
+			map.panTo(acsDenver2021Layer.getBounds().getCenter());
+			console.log(acsDenver2021Layer);
+			layerControl.addOverlay(acsDenver2021Layer, "Census 2021");
+		});
+		
+		// let's try to add the DRCOG data
+		$.getJSON('https://gisdata.drcog.org:8443/geoserver/DRCOGPUB/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=DRCOGPUB:bridges_low_clearance&outputFormat=application%2Fjson', function(data) {
+			newLayer = L.geoJSON(data).addTo(map);
+			layerControl.addOverlay(newLayer, "new Layer");
+		});
+		
 
 	// end document ready
 	});
