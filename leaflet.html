@@ -71,8 +71,8 @@
 		var baseMaps = { "OpenStreetMap" : OSMTiles,
 				 "Humanitarian OSM" : HOTOSMTiles,
 			         "OpenTopoMap" : OpenTopoMap };
-		var layers = { "Census 2021" : acs_denver_2021_layer };
-		var layerControl = L.control.layers(baseMaps,layers).addTo(map);
+		var myLayers = { "Census 2021" : acs_denver_2021_layer };
+		var layerControl = L.control.layers(baseMaps,myLayers).addTo(map);
 
 		var marker = L.marker([51.5, -0.09]).addTo(map)
 			.bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
