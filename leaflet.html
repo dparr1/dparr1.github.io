@@ -70,7 +70,7 @@
            			d > 10   ? '#FED976' :
                       			'#FFEDA0';
 			console.log("color : ", answer);
-			return({color : answer});
+			return({fillColor : answer});
 		}
 		
 		// let's add the Denver ACS data
@@ -78,7 +78,7 @@
 			acsDenver2021Layer = L.geoJSON(data,
 						       { style: function(feature) {
 							        getColor(feature.properties.PCT_POVERTY)
-						       }
+						                }
 						}).addTo(map);
 			console.log(data);
 			map.panTo(acsDenver2021Layer.getBounds().getCenter());
