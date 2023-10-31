@@ -61,7 +61,7 @@
 
 		function getColor(d) {
 			console.log("value is ", d);
-    			return d > 75 ? '#800026' :
+    			answer = d > 75 ? '#800026' :
            			d > 60  ? '#BD0026' :
            			d > 50  ? '#E31A1C' :
            			d > 40  ? '#FC4E2A' :
@@ -69,13 +69,14 @@
            			d > 20   ? '#FEB24C' :
            			d > 10   ? '#FED976' :
                       			'#FFEDA0';
+			return("color : " + answer);
 		}
 		
 		// let's add the Denver ACS data
 		$.getJSON('./acs_denver_2021.geojson', function(data) {
 			acsDenver2021Layer = L.geoJSON(data,
 						       { style: function(feature) {
-							        color: getColor(feature.properties.PCT_POVERTY)
+							        getColor(feature.properties.PCT_POVERTY)
 						       }
 						}).addTo(map);
 			console.log(data);
