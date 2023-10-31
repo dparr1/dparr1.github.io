@@ -76,7 +76,7 @@
 						       { style: function(feature) {
 							        color: getColor(feature.properties.PCT_POVERTY)
 						       }
-						})).addTo(map);
+						}).addTo(map);
 			console.log(data);
 			map.panTo(acsDenver2021Layer.getBounds().getCenter());
 			console.log(acsDenver2021Layer);
