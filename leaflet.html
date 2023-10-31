@@ -113,8 +113,8 @@
 		});
 
 		// let's try to add the DRCOG data
-		$.getJSON('https://gisdata.drcog.org:8443/geoserver/DRCOGPUB/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=DRCOGPUB:bicycle_share_stations&outputFormat=application%2Fjson', function(data) {
-			newLayer = L.geoJSON(data).addTo(map);
+		$.getJSON('https://data.colorado.gov/api/geospatial/trm9-dm4m?method=export&format=GeoJSON', function(data) {
+			newLayer = L.geoJSON(data);
 			console.log(data);
 			layerControl.addOverlay(newLayer, "new Layer");
 		});
