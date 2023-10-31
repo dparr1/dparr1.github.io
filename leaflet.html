@@ -49,17 +49,15 @@
 
 <script>
 
-	// let's define our global scope variables
-	var map; // our map variable
-	//var acsDenver2021Layer; // our primary data
-	//var newLayer; // our secondary layer
-
+        // the document ready wraps our javascript
+	// to make sure that everything loads in the 
+	// right order
 	$(document).ready(function() {
 
 		// let's create our basemap!
 		map = L.map('map').setView([0, 0], 10);
 
-		// let's add two sets of background tiles - one from OSM and one from HOT OSM
+		// let's add three sets of background tiles - one from OSM,  one from HOT OSM, and one from openTopoMap
 		var OSMTiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 			maxZoom: 19,
 			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -76,36 +74,9 @@
 			         "OpenTopoMap" : OpenTopoMap };
 		var layerControl = L.control.layers(baseMaps,null).addTo(map);
 
-
-		function style1(feature) {
-			d = feature.properties.PCT_POVERTY;
-    			answer = d > 30 ? '#800026' :
-           			d > 20  ? '#BD0026' :
-           			d > 15  ? '#E31A1C' :
-           			d > 10  ? '#FC4E2A' :
-           			d > 5   ? '#FD8D3C' :
-           			d > 3   ? '#FEB24C' :
-           			d > 1   ? '#FED976' :
-                      			'#FFEDA0';
-			style = { 
-				fillColor: answer,
-				weight: 1,
-				opacity: 1,
-				color: 'white',
-				dashArray: '3',
-				fillOpacity: 0.7
-				}
-			//console.log(style);
-			return style;
-		}
-		
 		// let's add the Denver ACS data
 		$.getJSON('./acs_denver_2021.geojson', function(data) {
-			acsDenver2021Layer = L.geoJSON(data,{ style:  style1, 
-							     onEachFeature: function(feature, layer) {
-								     layer.bindPopup("Percent Poverty: " + feature.properties.PCT_POVERTY + "%");
-							     }
-							    }).addTo(map);
+			acsDenver2021Layer = L.geoJSON(data).addTo(map);
 			console.log(data);
 			map.panTo(acsDenver2021Layer.getBounds().getCenter());
 			console.log(acsDenver2021Layer);
@@ -116,7 +87,7 @@
 		$.getJSON('https://data.colorado.gov/api/geospatial/trm9-dm4m?method=export&format=GeoJSON', function(data) {
 			newLayer = L.geoJSON(data);
 			console.log(data);
-			layerControl.addOverlay(newLayer, "new Layer");
+			layerControl.addOverlay(newLayer, "Highway Markers");
 		});
 
 
@@ -129,7 +100,7 @@
 
 
 <div id="header">
-	<h1><a href="https://www.census.gov/programs-surveys/acs">Denver 2021 American Community Survey (Census) data</a>: Percent Poverty in each neighborhood.</h1>
+	<h1><a href="https://www.census.gov/programs-surveys/acs">Denver 2021 American Community Survey (Census) data</a></h1>
 	<p>Data from <a href="https://denvergov.org/opendata/dataset/city-and-county-of-denver-american-community-survey-blk-grp-2017-2021">Denver Open Data</a></p>
 </div>
 <div id="map"></div>
