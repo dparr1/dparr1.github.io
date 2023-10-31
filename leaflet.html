@@ -47,7 +47,7 @@
 			console.log(data);
 			map.panTo(acsDenver2021Layer.getBounds().getCenter());
 		});
-		console.log(acsDevnver2021Layer);
+		console.log(acsDenver2021Layer);
 
 		// let's try to add the DRCOG data
 		$.getJSON('https://gisdata.drcog.org:8443/geoserver/DRCOGPUB/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=DRCOGPUB:bridges_low_clearance&outputFormat=application%2Fjson', function(data) {
