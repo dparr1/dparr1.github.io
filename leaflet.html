@@ -71,19 +71,23 @@
                       			'#FFEDA0';
 			style = { 
 				fillColor: answer,
-				weight: 2,
+				weight: 1,
 				opacity: 1,
 				color: 'white',
 				dashArray: '3',
 				fillOpacity: 0.7
 				}
-			console.log(style);
+			//console.log(style);
 			return style;
 		}
 		
 		// let's add the Denver ACS data
 		$.getJSON('./acs_denver_2021.geojson', function(data) {
-			acsDenver2021Layer = L.geoJSON(data,{ style:  style1 }).addTo(map);
+			acsDenver2021Layer = L.geoJSON(data,{ style:  style1, 
+							     onEachFeature: function(feature, layer) {
+								     layer.bindPopup("Percent Poverty: " + feature.properties.PCT_POVERTY + "%");
+							     }
+							    }).addTo(map);
 			console.log(data);
 			map.panTo(acsDenver2021Layer.getBounds().getCenter());
 			console.log(acsDenver2021Layer);
