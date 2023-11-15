@@ -73,7 +73,11 @@
 
 		// function to style my choropleth map
 		function style1(feature) {
-			d = feature.properties.KINDERGARTEN / feature.properties.ENROLLED_IN_SCHOOL * 100.0;
+		      if (feature.properties.ENROLLED_IN_SCHOOL == 0) {
+			   d = 0;
+		      } else {
+			   d = feature.properties.KINDERGARTEN / feature.properties.ENROLLED_IN_SCHOOL * 100.0;
+		      }
 			answer = d > 30 ? '#800026' :
 				 d > 20 ? '#DB0026' :
 				 d > 15 ? '#E31A1C' :
@@ -99,7 +103,11 @@
 			acsDenver2021Layer = L.geoJSON(data,
 						       { style: style1,
 						         onEachFeature: function(feature, layer) {
-								 d = feature.properties.KINDERGARTEN / feature.properties.ENROLLED_IN_SCHOOL * 100.0;
+								 if (feature.properties.ENROLLED_IN_SCHOOL == 0) {
+								   d = 0;
+								 } else {
+								   d = feature.properties.KINDERGARTEN / feature.properties.ENROLLED_IN_SCHOOL * 100.0;
+								 }
 								 layer.bindPopup("Percent Students in Kindergarten: " +
 										 d + '%');
 						         }
