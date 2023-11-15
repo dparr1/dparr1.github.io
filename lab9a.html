@@ -71,15 +71,15 @@
 		// the control let's the user turn on / off layers
 		var layerControl = L.control.layers(baseMaps,null).addTo(map);
 
+		// function to style my choropleth map
 		function style1(feature) {
 		}
-
 		
 		// let's add the Denver ACS data
 		$.getJSON('./acs_denver_2021.geojson', function(data) {
 			// convert the file into a layer
-			acsDenver2021Layer = L.geoJSON(data, 
-						       { style: style1 }				      
+			acsDenver2021Layer = L.geoJSON(data,
+						       { style: style1 }
 						      ).addTo(map);
 
 			// move the map to the area of the data
