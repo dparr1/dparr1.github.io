@@ -124,7 +124,8 @@
 								   d = feature.properties.KINDERGARTEN / feature.properties.ENROLLED_IN_SCHOOL * 100.0;
 								 }
 								 layer.bindPopup("Percent Students in Kindergarten: " +
-										 d + '%');
+										 d + '%<br>' +
+										 'Number of Kindergarteners: ' + feature.properties.KINDERGARTEN + '<br>';
 						         }
 						       }
 						      ).addTo(map);
