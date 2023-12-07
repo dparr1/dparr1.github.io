@@ -197,7 +197,10 @@
 
 	//click popup and zoom to description
 	$("#zoom-task1").click(function() {
-		$(this).animate({scrollTop: $("#task1").offset().top}, 'slow');
+		console.log("running zoom task 1");
+		var locationToGo = $("#task1").offset().top;
+		console.log("locationToGo: ", locationToGo);
+		$(this).animate({scrollTop: locationToGo}, 'slow');
 	});
 	      
 	      $("#zoom-task2").click(function() {
