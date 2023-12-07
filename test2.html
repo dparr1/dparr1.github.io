@@ -171,13 +171,7 @@
 		      });
 		//add 12 markers and popups with labors
 
-	$("#zoomtask1").click(function() {
-		console.log("running zoom task 1");
-		var body = $("html, body");
-		var locationToGo = $("#task1").offset().top;
-		console.log("locationToGo: ", locationToGo);
-		body.animate({scrollTop: locationToGo}, 'slow');
-	});
+
 	      
 		var marker1 = L.marker([37.81834040761616, 22.661747815062714]).addTo(map);
                     marker1.bindPopup('1: The Nemean Lion<button id="zoomtask1">Show details</button>')
@@ -203,7 +197,13 @@
 		 marker11.bindPopup('11: The Apples of Hesperides<button id="#zoom-task11">Show details</button>')
 		var marker12 = L.marker([37.498056, 23.363567]).addTo(map);
 		 marker12.bindPopup('12: Cerbeus<button id="#zoom-task12">Show details</button>')
-	      
+	$("#zoomtask1").click(function() {
+		console.log("running zoom task 1");
+		var body = $("html, body");
+		var locationToGo = $("#task1").offset().top;
+		console.log("locationToGo: ", locationToGo);
+		body.animate({scrollTop: locationToGo}, 'slow');
+	});
 	      $("#zoom-task2").click(function() {
 		$("#task2").animate({scrollTop: $("#task2").offset().top}, 'slow');
 	});
