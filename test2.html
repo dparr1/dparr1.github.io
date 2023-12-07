@@ -197,14 +197,13 @@
 		 marker11.bindPopup('11: The Apples of Hesperides<button id="#zoom-task11">Show details</button>')
 		var marker12 = L.marker([37.498056, 23.363567]).addTo(map);
 		 marker12.bindPopup('12: Cerbeus<button id="#zoom-task12">Show details</button>')
-	$("button").ready( function() {
-		$("#zoomtask1").click(function() {
+	document.getElementById("zoomtask1").onclick = function() {
 		console.log("running zoom task 1");
 		var body = $("html, body");
 		var locationToGo = $("#task1").offset().top;
 		console.log("locationToGo: ", locationToGo);
 		body.animate({scrollTop: locationToGo}, 'slow');
-		});
+		};
 	});
 	      $("#zoom-task2").click(function() {
 		$("#task2").animate({scrollTop: $("#task2").offset().top}, 'slow');
