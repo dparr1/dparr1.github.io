@@ -1,0 +1,404 @@
+
+<DOCTYPE html>
+  <html>
+    <head>
+      <title>12 GIS 3410 Final Project</title>
+
+      <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+      <style>
+        html,body {
+          height: 100%;
+          margin: 10px;
+        }
+        #map {
+          width: 100%;
+          height: 80%;
+        }
+        #header {
+          color: 800080;
+          font-family: "Garmond" , serif;
+          font-size: 25px;
+          width: 100%;
+          margin: auto;
+          align: center;
+        }
+        p {
+          font: serif 18px;
+          color: 800080;
+	  align: center;
+        }
+	      h5 {
+		   color: 800080;   
+	      }
+	      .description {
+		      font-size: 15px;
+		      font:serif;
+		      align: center;
+		      font-style: italic;
+	      }
+	#Lion {
+	      height: 300px;
+      width: 500px;
+      border: 1px solid #000000;
+      border-radius: 20%;
+      padding: 5px;
+      display: block;
+      margin: auto;
+       }
+       #Hydra {
+          height: 300px;
+          width: 500px;
+          border: 1px solid #000000;
+          border-radius: 20%;
+          padding: 5px;
+          display: block;
+          margin: auto;
+       }
+             #Hind {
+          height: 300px;
+          width: 500px;
+          border: 1px solid #000000;
+          border-radius: 20%;
+          padding: 5px;
+          display: block;
+          margin: auto;
+  }
+	      #Boar {
+          height: 300px;
+          width: 500px;
+          border: 1px solid #000000;
+          border-radius: 20%;
+          padding: 5px;
+          display: block;
+          margin: auto;
+  }
+	      #Stables {
+          height: 500px;
+          width: 500px;
+          border: 1px solid #000000;
+          border-radius: 20%;
+          padding: 5px;
+          display: block;
+          margin: auto;
+  }
+	      #Birds {
+          height: 300px;
+          width: 500px;
+          border: 1px solid #000000;
+          border-radius: 20%;
+          padding: 5px;
+          display: block;
+          margin: auto;
+  }
+	      #Bull {
+          height: 300px;
+          width: 500px;
+          border: 1px solid #000000;
+          border-radius: 20%;
+          padding: 5px;
+          display: block;
+          margin: auto;
+  }
+	      #Mares {
+          height: 300px;
+          width: 500px;
+          border: 1px solid #000000;
+          border-radius: 20%;
+          padding: 5px;
+          display: block;
+          margin: auto;
+  }
+	      #Girdle {
+          height: 500px;
+          width: 500px;
+          border: 1px solid #000000;
+          border-radius: 20%;
+          padding: 5px;
+          display: block;
+          margin: auto;
+  }
+	      #Oxen {
+          height: 300px;
+          width: 500px;
+          border: 1px solid #000000;
+          border-radius: 20%;
+          padding: 5px;
+          display: block;
+          margin: auto;
+  }
+	      #Apples {
+          height: 300px;
+          width: 500px;
+          border: 1px solid #000000;
+          border-radius: 20%;
+          padding: 5px;
+          display: block;
+          margin: auto;
+  }
+	      #Cerberus {
+          height: 500px;
+          width: 500px;
+          border: 1px solid #000000;
+          border-radius: 20%;
+          padding: 5px;
+          display: block;
+          margin: auto;
+  }
+    .caption {
+      font-size: 10px;
+      font-text: Times;
+      text-align: center;
+	      }
+      </style>
+      <script>
+        //document ready
+        $(document).ready(function() {
+    
+          //add basemep and background tiles
+          map = L.map('map').setView([39.92489767791341, 32.84463863289439], 5);
+          var OSMTiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              maxZoom: 20,
+              attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+		      }).addTo(map);
+          var OpenTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+		        	maxZoom: 20,
+		        	attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+		      });
+		//add 12 markers and popups with labors
+		var marker1 = L.marker([37.81834040761616, 22.661747815062714]).addTo(map);
+                    marker1.bindPopup('1: The Nemean Lion<button id="#zoom-task1">Show details</button>')
+		var marker2 = L.marker([37.558121, 22.706667]).addTo(map);
+		    marker2.bindPopup('2: The Hydra<button id="#zoom-task2">Show details</button>')
+		var marker3 = L.marker([37.890586, 21.527288]).addTo(map);
+		 marker3.bindPopup('3: The Horned Hind<button id="#zoom-task3">Show details</button>')
+		var marker4 = L.marker([37.966915, 21.799978]).addTo(map);
+		 marker4.bindPopup('4: The Erymanthian Boar<button id="#zoom-task4">Show details</button>')
+		var marker5 = L.marker([37.636392, 21.629884]).addTo(map);
+		 marker5.bindPopup('5: The Augean Stables<button id="#zoom-task5">Show details</button>')
+		var marker6 = L.marker([37.852338, 22.461780]).addTo(map);
+		 marker6.bindPopup('6: The Stymphalian Birds<button id="#zoom-task6">Show details</button>')
+		var marker7 = L.marker([35.338972, 25.146013]).addTo(map);
+		 marker7.bindPopup('7: The Cretan Bull<button id="#zoom-task7">Show details</button>')
+		var marker8 = L.marker([42.343980, 25.263988]).addTo(map);
+		 marker8.bindPopup('8: The Mares of Diomedes<button id="#zoom-task8">Show details</button>')
+		var marker9 = L.marker([41.211301317240235, 37.02032449695944]).addTo(map);
+		 marker9.bindPopup('9: The Girdle of Hippolyte<button id="#zoom-task9">Show details</button>')
+		var marker10 = L.marker([40.315254, 26.551427]).addTo(map);
+		 marker10.bindPopup('10: The Oxen of Geryones<button id="#zoom-task10">Show details</button>')
+		var marker11 = L.marker([42.6366, 44.1576]).addTo(map);
+		 marker11.bindPopup('11: The Apples of Hesperides<button id="#zoom-task11">Show details</button>')
+		var marker12 = L.marker([37.498056, 23.363567]).addTo(map);
+		 marker12.bindPopup('12: Cerbeus<button id="#zoom-task12">Show details</button>')
+
+	//click popup and zoom to description
+	$("#zoom-task1").click(function() {
+		$(this).animate({scrollTop: $("#task1").offset().top}, 'slow');
+	});
+	      
+	      $("#zoom-task2").click(function() {
+		$("#task2").animate({scrollTop: $("#task2").offset().top}, 'slow');
+	});
+
+	$("#zoom-task3").click(function() {
+		$("#task3").animate({scrollTop: $("#task3").offset().top}, 'slow');
+	});
+
+	$("#zoom-task4").click(function() {
+		$("#task4").animate({scrollTop: $("#task4").offset().top}, 'slow');
+	});
+
+	$("#zoom-task5").click(function() {
+		$("#task5").animate({scrollTop: $("#task5").offset().top}, 'slow');
+	});
+
+	$("#zoom-task6").click(function() {
+		$("#task6").animate({scrollTop: $("#task6").offset().top}, 'slow');
+	});
+
+	$("#zoom-task7").click(function() {
+		$("#task7").animate({scrollTop: $("#task7").offset().top}, 'slow');
+	});
+
+	$("#zoom-task8").click(function() {
+		$("#task8").animate({scrollTop: $("#task8").offset().top}, 'slow');
+	});
+
+	$("#zoom-task9").click(function() {
+		$("#task9").animate({scrollTop: $("#task9").offset().top}, 'slow');
+	});
+
+	$("#zoom-task10").click(function() {
+		$("#task10").animate({scrollTop: $("#task10").offset().top}, 'slow');
+	});
+
+	$("#zoom-task11").click(function() {
+		$("#task11").animate({scrollTop: $("#task11").offset().top}, 'slow');
+	});
+
+	$("#zoom-task12").click(function() {
+		$("#task12").animate({scrollTop: $("#task12").offset().top}, 'slow');
+	});
+
+
+	 
+        //two basemaps and control to turn on / off
+        var baseMaps = { "OpenStreetMap" : OSMTiles,
+                        "OpenTopoMap" : OpenTopoMap };
+        var layerControl = L.control.layers(baseMaps,null).addTo(map);
+
+        //add GeoJSON
+
+	});
+      </script>
+    </head>
+    <body>
+      <div id="header">The 12 Labors of Heracles</div>
+      
+      <p> One of the greatest and most well-known Greeks myths is the 12 Labors of Heracles. After killing his wife Megara and children because of a 
+      madness cursed on him by Hera, Heracles sought advice from Apollo and was then tasked with completing 12 impossible feats by King Eurystheus in 
+      an attempt to make upfor the death of his wife and children.</p>
+        <p>Here, I have created a map to show where each of his 12 labors is thought to have taken place.</p>
+      <p><h5>I would like to note that while some of these locations are associated with modern maps, 
+        the others on this map are theorized locations based off of the inforation provided in each story.</h5></p>
+      
+      <div id="map"></div>
+
+	   <div id="task1"><p>THE FIRST LABOR: The Nemean Lion</p>
+		   
+                <img id="Lion" src="herakles-wrestling-with-the-nemean-lion-by-psiax.webp">
+                <p class="caption">Herakles Wrestleing with the Nemean Lion<p/>
+                <p class="caption">Psiax (520–500 BCE) Photograph by Maria Daniels</p>
+                <p class="caption"><a href = 'https://www.perseus.tufts.edu/Herakles/lion.html'>University of Mississippi</a>
+            </p>
+	    <p class="description">Heracles' was first sent to Nemea to defeat the lion with a nearly impenetrable pelt. Using his bare hands, Heracles was 
+		    able to defeat the beast and then use the pelt of the Nemean lion as a type of armor.</p>
+	   </div>
+	  
+	    <div id="task2"><p>THE SECOND LABOR: The Hydra</p>
+	        <img id="Hydra" src="hercules-and-the-lernaean-hydra-1875-1876-by-gustave-moreau-art-institute-of-chicago.webp">
+	        <p class="caption">Hercules and the Lernean Hydra</p>
+	        <p class="caption">Gusta Moreau (1875-1876)</p>
+	        <p class="caption"><a href = 'https://www.artic.edu/artworks/20579/hercules-and-the-lernaean-hydra'> The Art Institue of Chicago</a></p>
+		<p class="description">During this labor, Heracles was assisted by his nephew Iolaus. It was not a easy battle as Heracles had to destroy each
+					   of the nine heads while being held by the creature. As the heads were destroyed, Iolaus burnt the stumps to ensure
+					   they would not grow back. After, Heracles buried the one immortal head (which was severed instead of being crushed) and
+					   dipped his arrows in the venom of the Hydra.</p>
+	    </div>
+		    
+	   <div id="task3"><p>THE THIRD LABOR: The Horned Hind</p>
+		    <img id="Hind" src="heracles-chasing-ceryneian-hind-illustration-1913.webp">
+		    <p class="caption">Heracles Chasing the Ceryneian Hind</p>
+		    <p class="caption">Edward Silvester Ellis and Charles F. Horne, The Story of the Greatest Nations (1913)</p>
+		    <p class="caption"><a href = 'https://www.flickr.com/photos/internetarchivebookimages/14596754367/'>University of California Library</a>
+		    <p class="description">The Hind was a female red deer that was special to Artemis with its golden horns and bronze hooves. Heracles chased
+		    this animal for an entire year before he captured it, though he had to make a deal with the goddess Artemis so he could finish his task, bringing
+		    it to King Eurystheus alive, though it ended up escaping once in Mycenae.</p>
+	   </div>
+	    
+	    <div id="task4">
+		    <p>THE FOURTH LABOR: The Erymanthian Boar</p>
+	         <img id="Boar" src="hercules-catching-the-boar-of-erymanthus-simon-frisius-after-antonio-tempesta-1610-64.webp">
+	          <p class="caption">Hercules Catching the Boar of Erymanthus</p>
+		  <p class="caption">Simon Frisius, after Antonio Tempesta (1610–64)</p>
+		  <p class="caption"><a href = 'https://www.rijksmuseum.nl/nl/collectie/RP-P-1882-A-6107'>RijksMuseum</a>
+			  <p class="description">After an encounter with Chiron and a group of other centaurs, Heracles was able to defeat the boar of Mount Erymanthus 
+			  by chasing the boar around the mountain. The boar became frightened and hid in a thicket, which allowed Heracles to push it into a deep snow 
+			  where Heracles cold net him to take back to Mycenae.</p>
+	    </div>
+       
+	    <div id="task5">
+		    <p>THE FIFTH LABOR: The Augean Stables</p>
+	     <img id="Stables" src="hercules_clean_the_augean_stables_in_a_single_day_by_sylvester0102_dft9i79-414w-2x.jpg">
+	       <p class="caption">Hercules clean the Augean stables in a single day</p>
+	       <p class="caption">Art by Sylvester0102</p>
+	       <p class="caption"><a href = 'https://www.deviantart.com/sylvester0102/art/Hercules-clean-the-Augean-stables-in-a-single-day-956144997'>DeviantArt</a></p>
+	    <p class="description">Next, King Eurystheus ordered the famed stables of King Augeas' stables to be cleaned in an entire day. What made these stables famous
+	    was that they housed a thousand cattle and had never been cleaned. Agreeing to pay Heracles one-tenth of his cattle, King Augeas agreed to the deal. Heracles then
+	    used two rivers to clean out the stables by digging trenches, which succeeded in cleaning the stables. To King Eurystheus however, this did not count because,
+	    Heracles was paid for his work.</p>
+	    </div>
+
+	   <div id="task6">
+		   <p>THE SIXTH LABOR:The Stymphalian Birds</p>
+	     <img id="Birds" src="hercules-killing-the-stymphalian-birds-by-albrecht-d_rer-circa-1500-germanisches-nationalmuseum.webp">
+	       <p class="caption">Hercules Killing the Stmphalian Birds</p>
+	       <p class="caption">Albrecht Dürer (1500)</p>
+	       <p class="caption"><a href = 'https://commons.wikimedia.org/wiki/File:1500_Duerer_Herkules_im_Kampf_gegen_die_stymphalischen_Voegel_anagoria.JPG'> GERMANISCHES NATIONALMUSEUM, NUREMBERG</a></p>
+	    <p class="description">The Stymphalian Birds were the favored animals of the Ares due to their bronze breaks and launchable metallic feathers. As his sixth task, Heracles
+	    Heracles frightened them from Lake Stymphalia with special tools made by Hephestus and his bow and arrows. After shooting some from the sky, Heracles because successful 
+	    in this task because the flock failed to return.</p>
+	   </div>
+
+	    <div id="task7">
+		    <p>THE SEVENTH LABOR:The Cretan Bull</p>
+	     <img id="Bull" src="hercules_ropes_cretan_bull.jpeg">
+	       <p class="caption">Hercules Ropes the Cretan Bull</p>
+	       <p class="caption">(530-520 B.C) Photograph by Maria Daniels</p>
+	       <p class="caption"><a href = 'https://www.perseus.tufts.edu/Herakles/bull.html'>University of Mississippi</a></p>
+	    <p class="description">Heracles next sailed to Crete where he was to capture the bull who lived there alive. This bull was famous because it fathered the Minotaur,
+	    which did make it difficult for Heracles to capture. Once captured, Heralces returned to Mycenae and presented it to the king. After, the Cretan Bull was released
+	    and fled to Marathon.</p>
+	    </div>
+
+	   <div id="task8">
+		   <p>THE EIGHTH LABOR:The Mares of Diomedes</p>
+	     <img id="Mares" src="main-image.jpg">
+	       <p class="caption">Hercules and the Mares of Diomedes</p>
+	       <p class="caption">Antonio Tempesta (1608)</p>
+	       <p class="caption"><a href = 'https://www.metmuseum.org/art/collection/search/397661'>Metropolitain Museum of Art</a></p>
+	    <p class="description">The Mares of Diomedes were quite strange, as their diet consisted of the flesh of the uninvited guests of their owner, Diomedes. Heracles 
+	    travled to Thrace to capture them. Killing Diomedes and feeding him to the mares, Heralces began his journey back to Mycenae when the twon of Tirida realized their king had been slain.
+	    The townspeople quickly gave up their pursuit because Heracles chased them all away with a chariot pulled by the four man-eating mares.</p>
+	   </div>
+
+	    <div id="task9">
+		    <p>THE NINTH LABOR: The Girdle of Hippolyta</p>
+	        <img id="Girdle" src="Joseph_Kuhn-R__gnier_-_Hippolyta.webp">
+	        <p class="caption">Hippolyta</p>
+	        <p class="caption">Joseph Kuhn-Régnier(1936)</p>
+	        <p class="caption"><a href = 'https://commons.wikimedia.org/wiki/File:Joseph_Kuhn-R%C3%A9gnier_-_Hippolyta.jpeg'>Shakko</a></p>
+	    <p class="description">King Eurystheus next taksed Heracles to retrieve the Girdle of Hippolyta for his daughter. The Girdle, a gift from her father Ares, symbolized her status
+	    as Queen of the Amazons. Heacles was clear with Hippolyta about what he needed to do, but Hera, angry that the Amazonian Queen would agree so easily, convince the 
+	    other Amazons that Heracles was really there to abduct their queen. Heracles assumed that Hippolyta gave an order to kill him, seeing all the other Amazonians 
+		    ready for battle, and thus killed her and took her girdle.</p>
+	    </div>
+
+	   <div id="task10">
+		   <p>THE TENTH LABOR:The Oxen of Geryones</p>
+               <img id="Oxen" src="hercules-kills-geryon-and-his-dog-cornelis-cort-after-frans-floris-ca-1563-95.webp">
+	       <p class="caption">Hercules Kills Geryon and His Dog</p>
+	       <p class="caption">Cornelius Cort, after Frans Floris (1563–95)</p>
+	       <p class="caption"><a href = 'https://www.rijksmuseum.nl/en/collection/RP-P-1899-A-21764'>RIJKSMUSEUM</a></p>
+	    <p class="description">This next task saw Heracles venture to Erythia to obtain the cattle of Geryon. First, Heracles was confronted by Geryon's two headed dog, then again by 
+	    Geryone himself, the Three-bodied giant. Salying both, Heracles then herded them back to King Eurystheus.</p>
+	   </div>
+	    
+	    <div id="task11">
+		    <p>THE ELEVENTH LABOR:The Apples of Hesperides</p>
+               <img id="Apples" src="1990.14.0210.jpeg">
+	       <p class="caption">Hercules in the garden of the Hesperides</p>
+	       <p class="caption">Photograph courtesy of the Trustees of the British Museum, London (410-400 B.C.)</p>
+	       <p class="caption"><a href = 'https://www.perseus.tufts.edu/Herakles/apples.html'>Hercules: Greece's Greates Hero</a></p>
+	    <p class="description">This task took Heracles very far from Mycenae. Not knowing where the Garden of Hesperides was, he traveled the world until he found Prometheus
+	    who told him that Atlas knew where the garden was. Atlas agreed to retrieve the apples for Heracles if Heracles could hold up the sky for him. Upon his return, 
+		    Heracles had to trick Atlas into taking back his burden so he could return the apples to Mycenae.</p>
+	    </div>
+	    
+	    <div id="task12">
+		    <p>THE TWELFTH LABOR: Cerberus</p>
+	       <img id="Cerberus" src ="hercules-and-cerberus-statue-by-antonin-pavel-wagner-hofburg-palace-vienna.webp">
+	       <p class="caption">Hercules and Cerberus Statue</p>
+	       <p class="caption">Atonin Pavel Wagner (1893)</p>
+	       <p class="caption"><a href = 'https://commons.wikimedia.org/wiki/File:Herakles_Cerberus_Antonin_Wagner_Hofburg_Vienna.jpg'></a></p>
+	    <p class="description">This last task was thought to be impossible by the king of Mycenae. Heracles was to look for a way into the Underworld so he could bring back Cerberus.
+		    Finding a route into the Underworld, Heracles was able to baragin to bring Cerberus to King Eurystheus to complete
+	    his final task. Hades agreed, and Heracles was able to carry Cerberus out of the Underworld to show the king of Mycenae. </p>
+	    </div>
+      
+    </body>
+  </html>
