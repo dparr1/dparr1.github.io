@@ -170,6 +170,15 @@
 		        	attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
 		      });
 		//add 12 markers and popups with labors
+
+			$("#zoomtask1").click(function() {
+		console.log("running zoom task 1");
+		var body = $("html, body");
+		var locationToGo = $("#task1").offset().top;
+		console.log("locationToGo: ", locationToGo);
+		body.animate({scrollTop: locationToGo}, 'slow');
+	});
+	      
 		var marker1 = L.marker([37.81834040761616, 22.661747815062714]).addTo(map);
                     marker1.bindPopup('1: The Nemean Lion<button id="#zoomtask1">Show details</button>')
 		var marker2 = L.marker([37.558121, 22.706667]).addTo(map);
