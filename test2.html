@@ -171,7 +171,7 @@
 		      });
 		//add 12 markers and popups with labors
 		var marker1 = L.marker([37.81834040761616, 22.661747815062714]).addTo(map);
-                    marker1.bindPopup('1: The Nemean Lion<button id="#zoom-task1">Show details</button>')
+                    marker1.bindPopup('1: The Nemean Lion<button id="#zoomtask1">Show details</button>')
 		var marker2 = L.marker([37.558121, 22.706667]).addTo(map);
 		    marker2.bindPopup('2: The Hydra<button id="#zoom-task2">Show details</button>')
 		var marker3 = L.marker([37.890586, 21.527288]).addTo(map);
@@ -196,7 +196,7 @@
 		 marker12.bindPopup('12: Cerbeus<button id="#zoom-task12">Show details</button>')
 
 	//click popup and zoom to description
-	$("#zoom-task1").click(function() {
+	$("#zoomtask1").click(function() {
 		console.log("running zoom task 1");
 		var body = $("html, body");
 		var locationToGo = $("#task1").offset().top;
