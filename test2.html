@@ -174,16 +174,9 @@
 
 	      
 		var marker1 = L.marker([37.81834040761616, 22.661747815062714]).addTo(map);
-                    marker1.bindPopup(`1: The Nemean Lion<button id="zoomtask1"> 
-		Show details</button> 
-		<script>document.getElementById("zoomtask1").onclick = function () { 
-		console.log("running zoom task 1"); 
-		var body = $("html, body"); 
-		var locationToGo = $("#task1").offset().top; 
-		console.log("locationToGo: ", locationToGo); 
-		body.animate({scrollTop: locationToGo}, "slow"); 
-		};</script>`);
-		var marker2 = L.marker([37.558121, 22.706667]).addTo(map);
+                    marker1.bindPopup('1: The Nemean Lion<button id="zoomtask1"> Show details</button> <script>document.getElementById("zoomtask1").onclick = function () { 		console.log("running zoom task 1"); 		var body = $("html, body"); 		var locationToGo = $("#task1").offset().top; 		console.log("locationToGo: ", locationToGo); body.animate({scrollTop: locationToGo}, "slow"); 	};</script>');
+	    
+	    var marker2 = L.marker([37.558121, 22.706667]).addTo(map);
 		    marker2.bindPopup('2: The Hydra<button id="#zoom-task2">Show details</button>')
 		var marker3 = L.marker([37.890586, 21.527288]).addTo(map);
 		 marker3.bindPopup('3: The Horned Hind<button id="#zoom-task3">Show details</button>')
